@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		cout << "\033[2;31m" ;
+		cout << "\033[5;31m" ;
 		cout << "TEST SUCCESS!";
 	}
 
