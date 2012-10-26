@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 Milk
 Cocoa Puffs
 Pepsi Max
 Hot dogs bread
->>>>>>> 4470aff04432cf86065fd2f15431c72797d342ea
 Ketchup
 Fried onions
 Mustard
