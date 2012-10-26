@@ -19,7 +19,6 @@ test:
 	@$(CC) test.cpp -o test
 	@./test
 	@rm -rf test
-	$(MAKE) checkin
 	@echo ""
 
 clean:
