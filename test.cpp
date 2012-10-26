@@ -16,12 +16,14 @@ int main(int argc, char* argv[])
 	
 	// call tests
 	assertEquals("Test if exercise is tdd", uri.valueFor("exercise"), "tdd");	
+	
+	assertEquals("Test if course is hugb", uri.valueFor("course"), "hugb");
 
 
 	if (FAILED_TESTS)
 	{
 		cout << "\033[1;31m" ;
-		cout << "Failed " << FAILED_TESTS << " tests." << endl;
+		cout << "\aFailed " << FAILED_TESTS << " tests." << endl;
 	}
 	else
 	{
