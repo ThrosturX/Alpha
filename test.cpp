@@ -17,10 +17,19 @@ int main(int argc, char* argv[])
 	// call tests
 	assertEquals("Test if exercise is tdd", uri.valueFor("exercise"), "tdd");	
 
+
 	if (FAILED_TESTS)
+	{
+		cout << "\033[1;31m" ;
 		cout << "Failed " << FAILED_TESTS << " tests." << endl;
+	}
 	else
-		cout << "\033[1;31mbold red text \033[0m" << endl;
+	{
+		cout << "\033[2;31m" ;
+		cout << "TEST SUCCESS!";
+	}
+
+	cout << "\033[0m" << endl;
 
 	return FAILED_TESTS;
 }
