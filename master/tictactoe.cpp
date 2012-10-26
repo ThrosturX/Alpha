@@ -1,4 +1,4 @@
-#inculde "tictactoe.h"
+#include "tictactoe.h"
 
 using namespace std;
 

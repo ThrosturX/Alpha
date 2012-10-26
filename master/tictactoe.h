@@ -9,7 +9,7 @@ public:
 	TicTacToe();
 	void addSymbol(char symbol, int x, int y);
 	void print();
-	void clean();
+	void clear();
 	void play();
 
 private:

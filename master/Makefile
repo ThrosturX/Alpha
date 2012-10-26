@@ -1,9 +1,15 @@
+CC=g++
+CFLAGS=
+LDFLAGS=
+SOURCES=main.cpp tictactoe.h tictactoe.cpp
+
+
 all:
-	g++ main.cpp -o test
+	g++ $(SOURCES) -o test
 
 checkin:
-	g++ main.cpp -o test
-	git add main.cpp
+	g++ $(SOURCES) -o test
+	git add $(SOURCES)
 	git commit -am "automated commit"
 	git push
 
