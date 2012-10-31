@@ -2,6 +2,7 @@
 #include "tictactoe.h"
 
 #include "throstur.cpp"
+#include "hlynur.cpp"
 
 using namespace std;
 
@@ -12,6 +13,7 @@ int main()
 */
 
 	Throstur();
+	printHlynur();
 
 	return 0;
 }
