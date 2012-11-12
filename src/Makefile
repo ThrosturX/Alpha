@@ -2,7 +2,7 @@
 CC=g++
 CFLAGS=
 LDFLAGS=
-SOURCES=src/TicTacToe.cpp
+SOURCES=../src/TicTacToe.cpp
 NAME=deliverable
 info=\033[0;33m
 NC=\033[0m # no color
