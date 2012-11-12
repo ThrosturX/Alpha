@@ -30,5 +30,5 @@ build:
 	@echo ""
 
 clean:
-	rm -rf *.o test
+	rm -rf *.o test $(BLOC)
 

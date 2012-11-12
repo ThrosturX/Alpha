@@ -19,5 +19,5 @@ checkin:
 	$(MAKE) clean
 
 clean:
-	rm -rf *.o src *.o test deliverable 
+	rm -rf *.o test deliverable 
 
