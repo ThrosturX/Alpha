@@ -1,31 +1,34 @@
-.PHONY: test
+.PHONY: build 
 CC=g++
 CFLAGS=
 LDFLAGS=
-SOURCES=../src/TicTacToe.cpp
+BLOC= ../release/TicTacToe
+SOURCES=play.cpp
 NAME=deliverable
-info=\033[0;33m
 NC=\033[0m # no color
+info=\033[0;33m
+green=\033[0;32m
 
+lib=-lUnitTest++
 
 all:
-	$(CC) $(SOURCES) -o $(NAME)
+	$(CC) $(SOURCES) -o $(NAME) $(lib)
 
 checkin:
-	@$(CC) test.cpp -o test
+	@$(CC) $(SOURCES) -o test $(lib)
 	git add $(SOURCES) Makefile
-	git commit -am "automated commit"
+	git commit -am $(MAKECMDGOALS) 
 	git push
 	$(MAKE) clean
 
-test:
-	@echo "\n$(info)Running Tests...$(NC)\n"
-	@rm -rf *.o test parser
-	@$(CC) test.cpp -o test
-	@./test
+build:
+	@echo "\n$(info)Building...$(NC)\n"
+	@rm -rf *.o test $(NAME) 
+	@$(CC) $(SOURCES) -o $(BLOC) $(lib) 
+	@$(BLOC)
 	@rm -rf test
 	@echo ""
 
 clean:
-	rm -rf *.o src *.o test parser
+	rm -rf *.o test
 
