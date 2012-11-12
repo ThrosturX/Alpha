@@ -17,7 +17,7 @@ all:
 checkin:
 	@$(CC) $(SOURCES) -o test $(lib)
 	git add $(SOURCES) Makefile
-	git commit -am $(MAKECMDGOALS) 
+	git commit -am "$(MAKECMDGOALS)" 
 	git push
 	$(MAKE) clean
 
