@@ -1,4 +1,4 @@
-#include "TicTacToe.h"
+#include "../src/TicTacToe.h"
 #include "../UnitTest++/src/UnitTest++.h"
 
 namespace
