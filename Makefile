@@ -1,4 +1,3 @@
-.PHONY: test
 CC=g++
 CFLAGS=
 LDFLAGS=
@@ -7,25 +6,18 @@ NAME=deliverable
 info=\033[0;33m
 NC=\033[0m # no color
 
+lib=-lUnitTest++
 
 all:
-	$(CC) $(SOURCES) -o $(NAME)
+	$(CC) $(SOURCES) -o $(NAME) $(lib)
 
 checkin:
-	@$(CC) test.cpp -o test
-	git add $(SOURCES) Makefile
+	@$(CC) test.cpp -o test $(lib)
+	git add src release Makefile
 	git commit -am "automated commit"
 	git push
 	$(MAKE) clean
 
-test:
-	@echo "\n$(info)Running Tests...$(NC)\n"
-	@rm -rf *.o test parser
-	@$(CC) test.cpp -o test
-	@./test
-	@rm -rf test
-	@echo ""
-
 clean:
-	rm -rf *.o src *.o test parser
+	rm -rf *.o src *.o test deliverable 
 
