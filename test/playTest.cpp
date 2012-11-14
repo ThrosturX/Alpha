@@ -34,7 +34,7 @@ TEST(add_symbol_2)
 
 	arr_correct[2][1] = 'O';
 
-	board.addSymbol('X',2,1);
+	board.addSymbol('O',2,1);
 	
 	CHECK_ARRAY2D_CLOSE(arr_correct, board.getBoard(),3,3, 0);
 }
@@ -52,7 +52,7 @@ TEST(add_symbol_3)
 
 	arr_correct[0][2] = 'X';
 
-	board.addSymbol('X',0,0);
+	board.addSymbol('X',0,2);
 	
 	CHECK_ARRAY2D_CLOSE(arr_correct, board.getBoard(),3,3, 0);
 }
