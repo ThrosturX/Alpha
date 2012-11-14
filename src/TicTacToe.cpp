@@ -3,9 +3,15 @@
 using namespace std;
 
 // Constructar, initializes scores as 0-0-0 (player 1, player 2, tie)
+// Initializes every tile on the board as ' '
 TicTacToe::TicTacToe()
 {
-
+	for(int i = 0; i<3; i++)
+	{
+		score[i] = 0;
+		for(int j = 0; j<3; j++)
+			board[i][j] = ' ';
+	}
 }
 
 // Plays the game
