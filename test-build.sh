@@ -5,7 +5,7 @@ make build > build.log 2>&1
 echo "Build completed"
 
 
-if grep -Fxq "Error"
+if grep -Fxq "Error" build.log
 then
 	echo "Sending email..."
 	mutt -a build.log -s "Build error!" $(cat emails) < build.log

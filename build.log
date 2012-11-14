@@ -1,8 +1,6 @@
 
-Building test build...
+[0;33mBuilding...[0m 
 
-rm -rf release/TicTacToe src/*.o
-test/playTest.cpp:21: error: Failure in add_symbol_1: Expected [ [ X     ] [       ] [       ] ] +/- 0 but was [ [ À d ` ] [ 
-FAILURE: 1 out of 1 tests failed (1 failures).
+Success: 8 tests passed.
 Test time: 0.00 seconds.
-make: *** [test-build] Error 1
+
