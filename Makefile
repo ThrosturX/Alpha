@@ -30,7 +30,7 @@ build:
 	@echo "\n$(info)Building...$(NC)\n"
 	@rm -rf $(TC)
 	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) 
-	@$(BLOC)
+	@-$(BLOC)
 	@rm -rf $(TC)
 	@echo ""
 
