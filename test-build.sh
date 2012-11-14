@@ -2,6 +2,9 @@
 echo "Testing build..."
 make build > build.log 2>&1
 
+echo "Build completed"
+
+
 if grep -Fxq "Error"
 then
 	echo "Sending email..."
