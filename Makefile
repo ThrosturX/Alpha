@@ -3,7 +3,7 @@ CC=g++
 CFLAGS=
 LDFLAGS=
 BLOC= release/TicTacToe
-TC = $(BLOC) src/*.o build.log
+TC = $(BLOC) src/*.o 
 SOURCES=src/play.cpp
 TESTS=test/playTest.cpp
 NAME=BoardGame
@@ -43,5 +43,5 @@ test-build:
 	@echo ""
 
 clean:
-	rm -rf $(TC)
+	rm -rf $(TC) build.log
 
