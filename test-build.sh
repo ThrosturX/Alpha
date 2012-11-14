@@ -1,16 +1,6 @@
 #!/bin/bash
-echo "Running one-time setup..."
-mkdir -p ~./mutt/cache/headers
-mkdir ~/.mutt/cache/bodies
-touch ~/.mutt/certificates
-
-cp ./temp ~/.muttrc
-
-echo "Pulling latest build..."
-git pull
-
 echo "Testing build..."
-make test-build > build.log 2>&1
+make build > build.log 2>&1
 
 if grep -Fxq "Error"
 then
