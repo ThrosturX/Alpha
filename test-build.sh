@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "Pulling latest release..."
+git pull
+
 echo "Testing build..."
 make build > build.log 2>&1
 
