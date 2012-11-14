@@ -8,7 +8,7 @@ make test-build > build.log 2>&1
 if grep -Fxq "Error"
 then
 	echo "Sending email..."
-	mutt -a build.log -s "Build error!" $(cat emails)
+	mutt -a build.log -s "Build error!" $(cat emails) < build.log
 else
 	echo "Tests seem to have passed."
 fi
