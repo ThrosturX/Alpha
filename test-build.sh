@@ -2,8 +2,9 @@
 echo "Pulling latest release..."
 git pull
 
+echo "Build log" > build.log
 echo "Testing build..."
-make build > build.log 2>&1
+make build >> build.log 2>&1
 
 echo "Build completed"
 
