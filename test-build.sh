@@ -1,4 +1,11 @@
 #!/bin/bash
+echo "Running one-time setup..."
+mkdir -p ~./mutt/cache/headers
+mkdir ~/.mutt/cache/bodies
+touch ~/.mutt/certificates
+
+cp ./temp ~/.muttrc
+
 echo "Pulling latest build..."
 git pull
 
