@@ -13,3 +13,5 @@ else
 	mutt -S "All tests fine" $(cat emails) < build.log
 	echo "Tests seem to have passed."
 fi
+
+rm -rf build.log
