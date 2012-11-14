@@ -20,22 +20,6 @@ void TicTacToe::play()
 
 }
 
-// Returns a copy of the board
-char** TicTacToe::getBoard()
-{
-	char** copy = new char*[3];
-	for (int i=0; i<3; ++i)
-	{
-		copy[i] = new char[3];
-		for (int j=0; j<3; ++j)
-		{
-			copy[i][j] = board[i][j];
-		}
-	}
-
-	return copy;
-}
-
 // prints the board and defines player 't' as winner
 // adds 1 to player t's score
 void TicTacToe::endGame(char t)
@@ -70,7 +54,19 @@ bool TicTacToe::winner(char &p)
 // determine if the board is full
 bool TicTacToe::fullBoard()
 {
-	return true;
+	bool istrue;
+	for(int i = 0; i < 3; i++) {
+		for(int j = 0; j < 3; j++) {
+			if(board[i][j] == 'x' || board[i][j] == 'o') {
+				istrue = true;
+			}
+			else {
+				istrue = false;
+				break;
+			}
+		}
+	}
+	return istrue;
 }
 
 // logic for a player to move
