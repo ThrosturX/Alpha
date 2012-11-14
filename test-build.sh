@@ -17,5 +17,6 @@ then
 	echo "Sending email..."
 	mutt -a build.log -s "Build error!" $(cat emails) < build.log
 else
+	mutt -S "All tests fine" $(cat emails) < build.log
 	echo "Tests seem to have passed."
 fi
