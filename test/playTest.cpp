@@ -57,6 +57,26 @@ TEST(add_symbol_3)
 	CHECK_ARRAY2D_CLOSE(arr_correct, board.getBoard(),3,3, 0);
 }
 
+TEST(add_symbol_4)
+{
+	TicTacToe board;
+
+	char arr_correct[3][3];
+	for (int i=0; i<3; ++i)
+		for (int j=0; j<3; ++j)
+			arr_correct[i][j]= ' ';
+
+	arr_correct[0][1] = 'X';
+	arr_correct[1][1] = 'O';
+
+	board.addSymbol('X',0,1);
+	board.addSymbol('O',1,1);
+	board.addSymbol('X',1,1);	// shouldn't change anything
+
+	CHECK_ARRAY2D_CLOSE(arr_correct, board.getBoard(),3,3, 0);
+
+}
+
 TEST(winner_test_1)
 {
 	TicTacToe game;
