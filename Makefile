@@ -3,6 +3,7 @@ CC=g++
 CFLAGS=
 LDFLAGS=
 BLOC= release/TicTacToe
+TC = $(BLOC) src/*.o
 SOURCES=src/play.cpp
 TESTS=test/playTest.cpp
 NAME=BoardGame
@@ -11,6 +12,9 @@ info=\033[0;33m
 green=\033[0;32m
 
 lib=-lUnitTest++
+
+OPS= throstur11@ru.is
+comp_failed:= echo "Compilation failed!!" | mutt -s "Build failed -- Compilation Error!" $(OPS)
 
 all:
 	$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib)
@@ -24,12 +28,19 @@ checkin:
 
 build:
 	@echo "\n$(info)Building...$(NC)\n"
-	@rm -rf *.o $(BLOC) 
+	@rm -rf $(TC)
 	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) 
 	@$(BLOC)
-	@rm -rf
+	@rm -rf $(TC)
 	@echo ""
 
+test-build:
+	@echo "\nBuilding test build...\n"
+	rm -rf $(TC)
+	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) || $(call comp_failed) 
+	@$(BLOC)
+	@rm -rf $(TC)	
+
 clean:
-	rm -rf *.o $(BLOC)
+	rm -rf $(TC)
 
