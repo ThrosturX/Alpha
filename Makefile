@@ -11,7 +11,7 @@ NC=\033[0m # no color
 info=\033[0;33m
 green=\033[0;32m
 
-lib=-lUnitTest++
+lib=-L./UnitTest++/ -lUnitTest++
 
 OPS= throstur11@ru.is
 comp_failed:= echo "Compilation failed!!" | mutt -s "Build failed -- Compilation Error!" $(OPS)
@@ -30,7 +30,7 @@ build:
 	@echo "\n$(info)Building...$(NC)\n"
 	@rm -rf $(TC)
 	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) 
-	@$(BLOC)
+	@-$(BLOC)
 	@rm -rf $(TC)
 	@echo ""
 
