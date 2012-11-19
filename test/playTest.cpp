@@ -51,6 +51,34 @@ TEST(winner_test_3)
 	CHECK_EQUAL(game.winner(player), true);
 }
 
+TEST(fullBoard_test_1)
+{
+	TicTacToe game;
+	game.addSymbol('X', 0, 0);
+	game.addSymbol('X', 0, 1);
+	game.addSymbol('O', 0, 2);
+	game.addSymbol('O', 1, 0);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('X', 1, 2);
+	game.addSymbol('X', 2, 0);
+	game.addSymbol('X', 2, 1);
+	game.addSymbol('O', 2, 2);
+	CHECK_EQUAL(game.fullBoard(), true);
+}
+
+TEST(fullBoard_test_2)
+{
+	TicTacToe game;
+	game.addSymbol('O', 0, 0);
+	game.addSymbol('O', 0, 1);
+	game.addSymbol('O', 0, 2);
+	game.addSymbol('O', 1, 0);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 1, 2);
+	game.addSymbol('O', 2, 0);
+	game.addSymbol('O', 2, 1);
+	CHECK_EQUAL(game.fullBoard(), false);
+}
 }
 
 int main()
