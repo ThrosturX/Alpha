@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ~/git/Alpha
 echo "Pulling latest release..."
 git pull
 
@@ -14,8 +15,8 @@ then
 	echo "Sending email..."
 	mutt -a build.log -s "Build error!" $(cat emails) < build.log
 else
-	mutt -s "All tests fine" $(cat emails) < build.log
 	echo "Tests seem to have passed."
 fi
 
 rm -rf build.log
+touch /tmp/testfile
