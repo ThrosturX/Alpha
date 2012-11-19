@@ -51,6 +51,19 @@ TEST(winner_test_3)
 	CHECK_EQUAL(game.winner(player), true);
 }
 
+TEST(clear)
+{
+	TicTacToe board;
+	char arr_correct[3][3];
+
+	for(int i=0; i<3; ++i)
+	{
+		for(int j=0; j<3; ++j)
+			arr_correct[i][j] = ' ';
+	}
+	board.clear();
+	CHECK_ARRAY2D_CLOSE(arr_correct,board.getBoard(),3,3, 0);
+}
 }
 
 int main()

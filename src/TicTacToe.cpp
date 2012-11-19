@@ -57,7 +57,11 @@ void TicTacToe::print()
 // clears the board
 void TicTacToe::clear()
 {
-
+	for(int i=0; i<3; ++i)
+	{
+		for(int j=0; j<3; ++j)
+			board[i][j] = ' ';
+	}
 }
 
 // checks for a winner, player s is the winner
