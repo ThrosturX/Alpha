@@ -37,7 +37,7 @@ build:
 test-build:
 	@echo "\nBuilding test build...\n"
 	rm -rf $(TC)
-	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) || $(call comp_failed) 
+	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib)# || $(call comp_failed) 
 	@$(BLOC)
 	@rm -rf $(TC)	
 

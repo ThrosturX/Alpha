@@ -21,11 +21,39 @@ TEST(add_symbol_1)
 	CHECK_ARRAY2D_CLOSE(arr_correct, board.getBoard(),3,3, 0);
 }
 
+TEST(winner_test_1)
+{
+	TicTacToe game;
+	game.addSymbol('X', 0, 0);
+	game.addSymbol('X', 0, 1);
+	game.addSymbol('X', 0, 2);
+	char player;
+	CHECK_EQUAL(game.winner(player),true);
+}
+
+TEST(winner_test_2)
+{
+	TicTacToe game;
+	game.addSymbol('O', 0, 0);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 2, 2);
+	char player;
+	CHECK_EQUAL(game.winner(player), true);
+}
+
+TEST(winner_test_3)
+{
+	TicTacToe game;
+	game.addSymbol('O', 0, 2);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 2, 0);
+	char player;
+	CHECK_EQUAL(game.winner(player), true);
+}
 
 }
 
 int main()
 {
-
 	return UnitTest::RunAllTests(); 
 }
