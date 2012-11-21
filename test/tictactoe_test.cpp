@@ -78,6 +78,48 @@ TEST(add_symbol_4)
 
 }
 
+TEST(getScore_1)
+{
+	TicTacToe game;
+
+	game.endGame('X');
+
+	int score[3] = {1, 0, 0};
+
+	CHECK_ARRAY_EQUAL(score, game.getScore(), 3);
+}
+
+TEST(getScore_2)
+{
+	TicTacToe game;
+
+	game.endGame('O');
+	game.endGame('O');
+	game.endGame('X');
+	game.endGame('O');
+	game.endGame('T');
+
+	int score[3] = {1,3,1};
+
+	CHECK_ARRAY_EQUAL(score, game.getScore(), 3);
+}
+
+TEST(getScore_3)
+{
+	TicTacToe game;
+
+	game.endGame('X');
+	game.endGame('X');
+	game.endGame('X');
+	game.endGame('O');
+	game.endGame('O');
+	game.endGame('T');
+
+	int wantScore[3] = {3,2,1};
+	int* gotScore = game.getScore();
+
+}
+
 TEST(winner_test_1)
 {
 	TicTacToe game;
@@ -162,14 +204,9 @@ TEST(printBoard_test_1)
 
 }
 */
-/*
+
 TEST(endGame_1)
 {
-	//redirect cout so we can test the output
-	std::ostringstream oss;
-	std::streambuf* coutConsole = std::cout.rdbuf();
-	std::cout.rdbuf(oss.rdbuf()); 
-
 	TicTacToe board;
 
 	char winner = 'X';
@@ -179,21 +216,12 @@ TEST(endGame_1)
 	board.endGame(winner);
 
 	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
-
-	//restore cout to console again
-	std::cout.rdbuf(coutConsole);
-	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
 }
 
 TEST(endGame_2)
 {
 	TicTacToe board;
 
-	//redirect cout so we can test the output
-	std::ostringstream oss;
-	std::streambuf* coutConsole = std::cout.rdbuf();
-	std::cout.rdbuf(oss.rdbuf()); 
-	
 	int score[3] = {4,2,0};	
 
 	board.endGame('X');
@@ -204,24 +232,11 @@ TEST(endGame_2)
 	board.endGame('O');
 
 	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
-	
-	//restore cout to console again
-	std::cout.rdbuf(coutConsole);
-	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
-	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
-	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
-	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
-	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
 }
 
 TEST(endGame_3)
 {
 	TicTacToe board;
-
-	//redirect cout so we can test the output
-	std::ostringstream oss;
-	std::streambuf* coutConsole = std::cout.rdbuf();
-	std::cout.rdbuf(oss.rdbuf()); 
 
 	int score[3] = {2,4,2};	
 
@@ -235,19 +250,8 @@ TEST(endGame_3)
 	board.endGame('O');
 
 	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
-	
-	//restore cout to console again
-	std::cout.rdbuf(coutConsole);
-	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
-	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
-	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
-	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
-	CHECK_EQUAL(oss.str(), "It's a tie!\n\n");
-	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
-	CHECK_EQUAL(oss.str(), "It's a tie!\n\n");
-	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
 }
-*/
+
 }
 /*
 int main()

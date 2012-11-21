@@ -30,9 +30,11 @@ void Play::printBoard()
 
 void Play::printScore()
 {
+	int* score = game.getScore();
+
 	cout << "The score is:" << endl
 		<< "\tX\tO\tTie" << endl
-		<< "\tscore[0]\tScore[1]\tScore[2]" << endl;	
+		<< "\t" << score[0] << "\t" << score[1] << "\t" << score[2] << endl << endl;
 }
 
 void Play::printWinner(char p)
@@ -41,13 +43,13 @@ void Play::printWinner(char p)
 		cout << "Player " << p << " wins!" << endl << endl;
 	else
 		cout << "It's a tie!" << endl << endl;
-/*
+
 	switch(p)
 	{
 		// winner
 		case 'X':
 		break;	
-	}*/
+	}	
 }
 
 void Play::getInput()

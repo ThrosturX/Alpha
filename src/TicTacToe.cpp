@@ -37,16 +37,9 @@ char** TicTacToe::getBoard()
 
 // prints the board and defines player 't' as winner
 // adds 1 to player t's score
-void TicTacToe::endGame(char t)
+void TicTacToe::endGame(char p)
 {
-//	print();
-	
-	if (t == 'X' || t == 'O')
-		cout << "Player " << t << " wins!" << endl << endl;
-	else
-		cout << "It's a tie!" << endl << endl;
-
-	switch (t)
+	switch (p)
 	{
 		// winner
 		case 'X':
