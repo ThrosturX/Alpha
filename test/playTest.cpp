@@ -137,7 +137,7 @@ TEST(fullBoard_test_2)
 	CHECK_EQUAL(game.fullBoard(), false);
 }
 
-
+/*
 TEST(printBoard_test_1)
 {
 	TicTacToe game;
@@ -161,9 +161,15 @@ TEST(printBoard_test_1)
 	CHECK_EQUAL(oss.str(), "X X X \n\nX X X \n\nX X X \n\n");
 
 }
-
+*/
+/*
 TEST(endGame_1)
 {
+	//redirect cout so we can test the output
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
+
 	TicTacToe board;
 
 	char winner = 'X';
@@ -174,13 +180,20 @@ TEST(endGame_1)
 
 	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
 
-	// check if the thing was printed out
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
+	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
 }
 
 TEST(endGame_2)
 {
 	TicTacToe board;
 
+	//redirect cout so we can test the output
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
+	
 	int score[3] = {4,2,0};	
 
 	board.endGame('X');
@@ -192,13 +205,23 @@ TEST(endGame_2)
 
 	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
 	
-	// check if it printed
-
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
+	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
+	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
+	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
+	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
+	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
 }
 
 TEST(endGame_3)
 {
 	TicTacToe board;
+
+	//redirect cout so we can test the output
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
 
 	int score[3] = {2,4,2};	
 
@@ -213,8 +236,18 @@ TEST(endGame_3)
 
 	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
 	
-	// check if it printed
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
+	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
+	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
+	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");
+	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
+	CHECK_EQUAL(oss.str(), "It's a tie!\n\n");
+	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
+	CHECK_EQUAL(oss.str(), "It's a tie!\n\n");
+	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");
 }
+*/
 }
 
 int main()

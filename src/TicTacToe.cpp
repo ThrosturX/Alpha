@@ -39,9 +39,12 @@ char** TicTacToe::getBoard()
 // adds 1 to player t's score
 void TicTacToe::endGame(char t)
 {
-	print();
-
-	cout << "Player " << t << " wins!" << endl;
+//	print();
+	
+	if (t == 'X' || t == 'O')
+		cout << "Player " << t << " wins!" << endl << endl;
+	else
+		cout << "It's a tie!" << endl << endl;
 
 	switch (t)
 	{
