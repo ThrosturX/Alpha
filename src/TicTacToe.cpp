@@ -61,7 +61,7 @@ void TicTacToe::endGame(char t)
 		default:
 			score[2]++;
 			break;
-	}	
+	}
 }
 
 int* TicTacToe::getScore()
@@ -156,9 +156,9 @@ bool TicTacToe::fullBoard()
 void TicTacToe::playerInput(char &p)
 {
 	//Oli is doing this
-	while(p!='x' && p!= 'y')
+	while(p!='X' && p!= 'O')
 	{
-	    cout << "Invalid character, please enter either x or o " << endl;
+	    cout << "Invalid character, please enter either X or O " << endl;
 	    cin >> p;
 	}
 	char a;
