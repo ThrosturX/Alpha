@@ -28,7 +28,9 @@ void Play::printBoard()
 
 void Play::printScore()
 {
-
+	cout << "The score is:" << endl
+		<< "\tX\tO\tTie" << endl
+		<< "\tscore[0]\tScore[1]\tScore[2]" << endl;	
 }
 
 void Play::printWinner(char p)

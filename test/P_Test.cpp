@@ -4,7 +4,6 @@
 
 namespace
 {
-
 TEST(printScore_1)
 {
 	// redirect output	
@@ -14,7 +13,44 @@ TEST(printScore_1)
 
 	Play player;
 
+	player.getGame().endGame('X');
+
+	player.printScore();
+
+	CHECK_EQUAL(oss.str(), "The score is:\n\tX\tO\tTie\n1\t0\t0");	
+	
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
+}
+
+TEST(printScore_2)
+{
+	// redirect output	
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
+
+	Play player;
+
 // logic missing
+
+	CHECK_EQUAL(oss.str(), "Player X wins!/n/n");	
+
+	
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
+}
+
+TEST(printWinner_1)
+{
+	// redirect output	
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
+
+	Play player;
+
+	player.printWinner('X');
 
 	CHECK_EQUAL(oss.str(), "Player X wins!/n/n");	
 
