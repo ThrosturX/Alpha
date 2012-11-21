@@ -249,8 +249,9 @@ TEST(endGame_3)
 }
 */
 }
-
+/*
 int main()
 {
 	return UnitTest::RunAllTests(); 
 }
+*/

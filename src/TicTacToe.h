@@ -8,7 +8,7 @@ class TicTacToe
 public:
 	TicTacToe();
 	
-	void play();
+//	void play();
 	void clear();
 
 	char** getBoard();

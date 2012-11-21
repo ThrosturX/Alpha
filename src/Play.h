@@ -7,19 +7,20 @@
 class Play
 {
 public:
-	Play();
+//	Play();
 
 	void start();	// play tic tac toe
 
-private:
-	TicTacToe game;
 	void printBoard();		// print tic tac toe board
 	void printScore();
 	void printWinner(char t);
 	
 	void getInput();			// get input from user
 	
+	TicTacToe getGame();
 
+private:
+	TicTacToe game;
 };
 
 #endif // PLAY_H

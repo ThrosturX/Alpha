@@ -13,13 +13,13 @@ TicTacToe::TicTacToe()
 			board[i][j] = ' ';
 	}
 }
-
+/*
 // Plays the game
 void TicTacToe::play()
 {
 
 }
-
+*/
 // Returns a copy of the board
 char** TicTacToe::getBoard()
 {
