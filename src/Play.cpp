@@ -12,11 +12,7 @@ Play::Play()
 
 Play::~Play()
 {
-	for(int i = 0; i<3; i++) {
-		for(int j = 0; j<3; j++) {
-			delete board[i][j];
-		}
-	}
+	delete game;
 }
 
 // spawns a tic tac toe object and manipulates it's logic to play
