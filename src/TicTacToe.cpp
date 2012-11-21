@@ -39,13 +39,14 @@ char** TicTacToe::getBoard()
 // adds 1 to player t's score
 void TicTacToe::endGame(char t)
 {
-
+	// Throstur is doing this.
 }
 
 // places player s's symbol on the board
 void TicTacToe::addSymbol(char s, int x, int y)
 {
-	board[x][y] = s;
+	if (board[x][y] == ' ')
+		board[x][y] = s;
 }
 
 // prints the board
