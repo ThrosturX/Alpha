@@ -2,8 +2,8 @@
 #include "../src/Play.h"
 #include "../UnitTest++/src/UnitTest++.h"
 #include <sstream>
-#include "T_Test.cpp"
-#include "P_Test.cpp"
+#include "tictactoe_test.cpp"
+#include "play_test.cpp"
 
 int main()
 {

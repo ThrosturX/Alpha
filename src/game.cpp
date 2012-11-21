@@ -1,9 +1,12 @@
 #include <iostream>
-#include "TicTacToe.cpp" 
-#include "../UnitTest++/src/UnitTest++.h"
+#include "Play.h" 
 /*
 int main()
 {
-	return UnitTest::RunAllTests();
+	Play player;
+
+	player.start();
+
+	return 0;
 }
 */
