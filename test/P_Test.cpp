@@ -23,5 +23,29 @@ TEST(printScore_1)
 	std::cout.rdbuf(coutConsole);
 }
 
+TEST(printBoard_test_1)
+{
+	TicTacToe game;
+	game.addSymbol('X', 0, 0);
+	game.addSymbol('X', 0, 1);
+	game.addSymbol('X', 0, 2);
+	game.addSymbol('X', 1, 0);
+	game.addSymbol('X', 1, 1);
+	game.addSymbol('X', 1, 2);
+	game.addSymbol('X', 2, 0);
+	game.addSymbol('X', 2, 1);
+	game.addSymbol('X', 2, 2);
+
+	//redirect cout so we can test the output
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
+	game.print();
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
+	CHECK_EQUAL(oss.str(), "-----\nX X X \n-----\nX X X \n-----\nX X X \n-----\n");
+
+}
+
 
 }
