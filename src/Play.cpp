@@ -25,7 +25,7 @@ void Play::start()
 void Play::printBoard()
 {
 	char** board = getGame().getBoard();
-	
+
 	for(int i = 0; i<3; i++){
 		cout << "-----" << endl;
 		for(int j = 0; j<3; j++){
@@ -42,7 +42,7 @@ void Play::printScore()
 		<< "\tX\tO\tTie" << endl;
 		for (int i=0; i<3; ++i)
 		{
-			cout <<	"\t" << game->getScore(i); 
+			cout <<	"\t" << game->getScore(i);
 		}
 		cout << endl << endl;
 }
@@ -57,51 +57,33 @@ void Play::printWinner(char p)
 
 void Play::getInput()
 {
-    while(!(getGame().fullBoard()))
+    for(int i = 1;i<=2;i++)
     {
-        char a;
-        int y;
-        cout << "Player 1's Turn " << endl;
-        cout << "please enter the column name (A,B,C) and the row number of where you'd like to play \n";
-        cout << "For example, A 2 or B 0" << endl;
-        cin >> a,y;
-         while(!correctInput(a,y) || exists(a-65,y))
+        while(!(getGame().fullBoard()))
         {
-            if(!correctInput(a,y))
+            char a;
+            int y;
+            cout << "Player" << i <<"'s Turn " << endl;
+            cout << "please enter the column name (A,B,C) and the row number of where you'd like to play \n";
+            cout << "For example, A 2 or B 0" << endl;
+            cin >> a,y;
+            while(!correctInput(a,y) || exists(a-65,y))
             {
-                cout << "Please enter your input in the right format. Example A 2 or B 0" << endl;
-                cin >> a >> y;
-            }
+                if(!correctInput(a,y))
+                {
+                    cout << "Please enter your input in the right format. Example A 2 or B 0" << endl;
+                    cin >> a >> y;
+                }
 
-            if(exists(a-65,y) && correctInput(a,y))
-            {
-                cout << "Invalid play, please try again" << endl;
-                cin >> a >> y;
+                if(exists(a-65,y) && correctInput(a,y))
+                {
+                    cout << "Invalid play, please try again" << endl;
+                    cin >> a >> y;
+                }
             }
-        }
 
         getGame().addSymbol('X',a-65,y); //a - 65 because of ASCII
-
-        cout << "Player 2's Turn " << endl;
-        cout << "please enter the column name (A,B,C) and the row number of where you'd like to play \n";
-        cout << "For example, A 2 or B 0" << endl;
-        cin >> a,y;
-        while(!correctInput(a,y) || exists(a-65,y))
-        {
-            if(!correctInput(a,y))
-            {
-                cout << "Please enter your input in the right format. Example A 2 or B 0" << endl;
-                cin >> a >> y;
-            }
-
-            if(exists(a-65,y) && correctInput(a,y))
-            {
-                cout << "Invalid play, please try again" << endl;
-                cin >> a >> y;
-            }
         }
-        getGame().addSymbol('O',a-65,y);
-
     }
 
 }
