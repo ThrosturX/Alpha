@@ -77,12 +77,13 @@ void TicTacToe::addSymbol(char s, int x, int y)
 void TicTacToe::print()
 {
 	for(int i = 0; i<3; i++){
+		cout << "-----" << endl;
 		for(int j = 0; j<3; j++){
 			cout << board[i][j] << " ";
 		}
-		cout << "\n\n";
+		cout << "\n";
 	}
-
+	cout << "-----\n";
 }
 
 // clears the board
