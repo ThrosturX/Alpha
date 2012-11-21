@@ -3,10 +3,12 @@
 
 using namespace std;
 
-/*Play::Play()
+Play::Play()
 {
-	game.clear();
-}*/
+	//TicTacToe* newGame = new TicTacToe();
+	game = new TicTacToe();
+	//game.clear();
+}
 
 // spawns a tic tac toe object and manipulates it's logic to play
 void Play::start()
@@ -57,5 +59,5 @@ void Play::getInput()
 
 TicTacToe Play::getGame()
 {
-	return game;
+	return *game;
 }

@@ -137,6 +137,55 @@ TEST(fullBoard_test_2)
 	CHECK_EQUAL(game.fullBoard(), false);
 }
 
+TEST(getBoard_test_1)
+{
+	TicTacToe game;
+	char board[3][3];
+	for(int i = 0; i<3; i++){
+		for(int j = 0; j<3; j++){
+			board[i][j] = ' ';
+		}
+	}
+	CHECK_EQUAL(game.getBoard()[0][0], board[0][0]);
+	CHECK_EQUAL(game.getBoard()[0][1], board[0][1]);
+	CHECK_EQUAL(game.getBoard()[0][2], board[0][2]);
+	CHECK_EQUAL(game.getBoard()[1][0], board[1][0]);
+	CHECK_EQUAL(game.getBoard()[1][1], board[1][1]);
+	CHECK_EQUAL(game.getBoard()[1][2], board[1][2]);
+	CHECK_EQUAL(game.getBoard()[2][0], board[2][0]);
+	CHECK_EQUAL(game.getBoard()[2][1], board[2][1]);
+	CHECK_EQUAL(game.getBoard()[2][2], board[2][2]);
+}
+
+TEST(getBoard_test_2)
+{
+	TicTacToe game;
+	game.addSymbol('X', 0, 0);
+	game.addSymbol('X', 0, 1);
+	game.addSymbol('X', 0, 2);
+	game.addSymbol('X', 1, 0);
+	game.addSymbol('X', 1, 1);
+	game.addSymbol('X', 1, 2);
+	game.addSymbol('X', 2, 0);
+	game.addSymbol('X', 2, 1);
+	game.addSymbol('X', 2, 2);
+	char board[3][3];
+	for(int i = 0; i<3; i++){
+		for(int j = 0; j<3; j++){
+			board[i][j] = 'X';
+		}
+	}
+	CHECK_EQUAL(game.getBoard()[0][0], board[0][0]);
+	CHECK_EQUAL(game.getBoard()[0][1], board[0][1]);
+	CHECK_EQUAL(game.getBoard()[0][2], board[0][2]);
+	CHECK_EQUAL(game.getBoard()[1][0], board[1][0]);
+	CHECK_EQUAL(game.getBoard()[1][1], board[1][1]);
+	CHECK_EQUAL(game.getBoard()[1][2], board[1][2]);
+	CHECK_EQUAL(game.getBoard()[2][0], board[2][0]);
+	CHECK_EQUAL(game.getBoard()[2][1], board[2][1]);
+	CHECK_EQUAL(game.getBoard()[2][2], board[2][2]);
+}
+
 /*
 TEST(printBoard_test_1)
 {

@@ -7,7 +7,7 @@
 class Play
 {
 public:
-//	Play();
+	Play();
 
 	void start();	// play tic tac toe
 
@@ -20,7 +20,7 @@ public:
 	TicTacToe getGame();
 
 private:
-	TicTacToe game;
+	TicTacToe* game;
 };
 
 #endif // PLAY_H
