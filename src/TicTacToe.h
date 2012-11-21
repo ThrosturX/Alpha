@@ -18,10 +18,11 @@ public:
 	void endGame(char p);
 	void addSymbol(char s, int x, int y);
 	bool fullBoard();
+	int* getScore();
 
 private:
 	char board[3][3];
-	int score[3];	
+	int score[3];	// X - O - TIE
 };
 
 #endif
