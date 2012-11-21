@@ -16,6 +16,8 @@ void Play::start()
 
 void Play::printBoard()
 {
+	char** board = getGame().getBoard();
+	
 	for(int i = 0; i<3; i++){
 		cout << "-----" << endl;
 		for(int j = 0; j<3; j++){
@@ -35,7 +37,17 @@ void Play::printScore()
 
 void Play::printWinner(char p)
 {
-
+	if (p == 'X' || p == 'O')
+		cout << "Player " << p << " wins!" << endl << endl;
+	else
+		cout << "It's a tie!" << endl << endl;
+/*
+	switch(p)
+	{
+		// winner
+		case 'X':
+		break;	
+	}*/
 }
 
 void Play::getInput()

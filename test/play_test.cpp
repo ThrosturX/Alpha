@@ -58,7 +58,7 @@ TEST(printWinner_1)
 	//restore cout to console again
 	std::cout.rdbuf(coutConsole);
 }
-
+/*
 TEST(printBoard_test_1)
 {
 	TicTacToe game;
@@ -82,6 +82,6 @@ TEST(printBoard_test_1)
 	CHECK_EQUAL(oss.str(), "-----\nX X X \n-----\nX X X \n-----\nX X X \n-----\n");
 
 }
-
+*/
 
 }

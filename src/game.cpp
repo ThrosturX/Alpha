@@ -1,6 +1,6 @@
 #include <iostream>
-#include "play.h" 
-
+#include "Play.h" 
+/*
 int main()
 {
 	Play player;
@@ -9,3 +9,4 @@ int main()
 
 	return 0;
 }
+*/
