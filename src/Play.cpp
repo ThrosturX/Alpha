@@ -5,9 +5,7 @@ using namespace std;
 
 Play::Play()
 {
-	//TicTacToe* newGame = new TicTacToe();
 	game = new TicTacToe();
-	//game.clear();
 }
 
 Play::~Play()
@@ -23,8 +21,6 @@ void Play::start()
 
 void Play::printBoard()
 {
-	//char** board = getGame().getBoard();
-	
 	for(int i = 0; i<3; i++){
 		cout << "-----" << endl;
 		for(int j = 0; j<3; j++){
