@@ -39,13 +39,38 @@ char** TicTacToe::getBoard()
 // adds 1 to player t's score
 void TicTacToe::endGame(char t)
 {
+	print();
 
+	cout << "Player " << t << " wins!" << endl;
+
+	switch (t)
+	{
+		// winner
+		case 'X':
+			score[0]++;
+			break;
+		case 'O':
+			score[1]++;
+			break;
+
+		// no winner
+		case 'T':
+		default:
+			score[2]++;
+			break;
+	}	
+}
+
+int* TicTacToe::getScore()
+{
+	return score;
 }
 
 // places player s's symbol on the board
 void TicTacToe::addSymbol(char s, int x, int y)
 {
-	board[x][y] = s;
+	if (board[x][y] == ' ')
+		board[x][y] = s;
 }
 
 // prints the board
@@ -63,7 +88,11 @@ void TicTacToe::print()
 // clears the board
 void TicTacToe::clear()
 {
-
+	for(int i=0; i<3; ++i)
+	{
+		for(int j=0; j<3; ++j)
+			board[i][j] = ' ';
+	}
 }
 
 // checks for a winner, player s is the winner
@@ -122,7 +151,7 @@ bool TicTacToe::fullBoard()
 // logic for a player to move
 void TicTacToe::playerInput(char &p)
 {
-	
+	//Oli is doing this	
 }
 
 
