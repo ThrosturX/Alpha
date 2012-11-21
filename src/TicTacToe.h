@@ -14,7 +14,7 @@ public:
 	char** getBoard();
 	bool winner(char &p);
 	void playerInput(char &p);
-	void print();
+	//void print();
 	void endGame(char p);
 	void addSymbol(char s, int x, int y);
 	bool fullBoard();

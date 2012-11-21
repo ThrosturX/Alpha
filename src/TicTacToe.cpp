@@ -2,7 +2,7 @@
 #include <cstdlib>
 using namespace std;
 
-// Constructar, initializes scores as 0-0-0 (player 1, player 2, tie)
+// Constructer, initializes scores as 0-0-0 (player 1, player 2, tie)
 // Initializes every tile on the board as ' '
 TicTacToe::TicTacToe()
 {
@@ -75,7 +75,7 @@ void TicTacToe::addSymbol(char s, int x, int y)
 	if (board[x][y] == ' ')
 		board[x][y] = s;
 }
-
+/*
 // prints the board
 void TicTacToe::print()
 {
@@ -88,7 +88,7 @@ void TicTacToe::print()
 	}
 	cout << "-----\n";
 }
-
+*/
 // clears the board
 void TicTacToe::clear()
 {
