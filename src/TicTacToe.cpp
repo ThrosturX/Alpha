@@ -29,6 +29,11 @@ char** TicTacToe::getBoard()
 	return copy;
 }
 
+char TicTacToe::getBoardElement(int x, int y)
+{
+	return board[x][y];
+}
+
 // prints the board and defines player 't' as winner
 // adds 1 to player t's score
 void TicTacToe::endGame(char p)

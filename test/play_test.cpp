@@ -64,7 +64,7 @@ TEST(printWinner_1)
 	std::cout.rdbuf(coutConsole);
 }
 
-/*TEST(printBoard_test_1)
+TEST(printBoard_test_1)
 {
 	Play game;
 	game.getGame().addSymbol('X', 0, 0);
@@ -86,6 +86,6 @@ TEST(printWinner_1)
 	std::cout.rdbuf(coutConsole);
 	CHECK_EQUAL(oss.str(), "-----\nX X X \n-----\nX X X \n-----\nX X X \n-----\n");
 
-}*/
+}
 
 }

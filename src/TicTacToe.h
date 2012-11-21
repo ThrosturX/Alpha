@@ -9,6 +9,7 @@ public:
 	void clear();
 
 	char** getBoard();
+	char getBoardElement(int x, int y);
 	bool winner(char &p);
 	void endGame(char p);
 	void addSymbol(char s, int x, int y);

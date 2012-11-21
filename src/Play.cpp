@@ -21,21 +21,19 @@ void Play::start()
 }
 
 
-/*
 void Play::printBoard()
 {
-	char** board = getGame().getBoard();
 
+	
 	for(int i = 0; i<3; i++){
 		cout << "-----" << endl;
 		for(int j = 0; j<3; j++){
-			cout << board[i][j] << " ";
+			cout << getGame().getBoardElement(i, j) << " ";
 		}
 		cout << "\n";
 	}
 	cout << "-----\n";
 }
-*/
 void Play::printScore()
 {
 	cout << "The score is:" << endl
