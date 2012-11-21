@@ -39,7 +39,31 @@ char** TicTacToe::getBoard()
 // adds 1 to player t's score
 void TicTacToe::endGame(char t)
 {
-	// Throstur is doing this.
+	print();
+
+	cout << "Player " << t << " wins!" << endl;
+
+	switch (t)
+	{
+		// winner
+		case 'X':
+			score[0]++;
+			break;
+		case 'O':
+			score[1]++;
+			break;
+
+		// no winner
+		case 'T':
+		default:
+			score[2]++;
+			break;
+	}	
+}
+
+int* TicTacToe::getScore()
+{
+	return score;
 }
 
 // places player s's symbol on the board
@@ -52,6 +76,12 @@ void TicTacToe::addSymbol(char s, int x, int y)
 // prints the board
 void TicTacToe::print()
 {
+	for(int i = 0; i<3; i++){
+		for(int j = 0; j<3; j++){
+			cout << board[i][j] << " ";
+		}
+		cout << "\n\n";
+	}
 
 }
 

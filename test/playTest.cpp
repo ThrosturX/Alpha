@@ -1,5 +1,6 @@
 #include "../src/TicTacToe.h"
 #include "../UnitTest++/src/UnitTest++.h"
+#include <sstream>
 
 namespace
 {
@@ -107,20 +108,6 @@ TEST(winner_test_3)
 	CHECK_EQUAL(game.winner(player), true);
 }
 
-TEST(clear)
-{
-	TicTacToe board;
-	char arr_correct[3][3];
-
-	for(int i=0; i<3; ++i)
-	{
-		for(int j=0; j<3; ++j)
-			arr_correct[i][j] = ' ';
-	}
-	board.clear();
-	CHECK_ARRAY2D_CLOSE(arr_correct,board.getBoard(),3,3, 0);
-}
-
 TEST(fullBoard_test_1)
 {
 	TicTacToe game;
@@ -148,7 +135,85 @@ TEST(fullBoard_test_2)
 	game.addSymbol('O', 2, 0);
 	game.addSymbol('O', 2, 1);
 	CHECK_EQUAL(game.fullBoard(), false);
->>>>>>> 2186294b52e149c472433c679f1e431d2a05f9b2
+}
+
+
+TEST(printBoard_test_1)
+{
+	TicTacToe game;
+	game.addSymbol('X', 0, 0);
+	game.addSymbol('X', 0, 1);
+	game.addSymbol('X', 0, 2);
+	game.addSymbol('X', 1, 0);
+	game.addSymbol('X', 1, 1);
+	game.addSymbol('X', 1, 2);
+	game.addSymbol('X', 2, 0);
+	game.addSymbol('X', 2, 1);
+	game.addSymbol('X', 2, 2);
+
+	//redirect cout so we can test the output
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
+	game.print();
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
+	CHECK_EQUAL(oss.str(), "X X X \n\nX X X \n\nX X X \n\n");
+
+}
+
+TEST(endGame_1)
+{
+	TicTacToe board;
+
+	char winner = 'X';
+
+	int score[3] = {1,0,0};	
+
+	board.endGame(winner);
+
+	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
+
+	// check if the thing was printed out
+}
+
+TEST(endGame_2)
+{
+	TicTacToe board;
+
+	int score[3] = {4,2,0};	
+
+	board.endGame('X');
+	board.endGame('X');
+	board.endGame('X');
+	board.endGame('X');
+	board.endGame('O');
+	board.endGame('O');
+
+	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
+	
+	// check if it printed
+
+}
+
+TEST(endGame_3)
+{
+	TicTacToe board;
+
+	int score[3] = {2,4,2};	
+
+	board.endGame('X');
+	board.endGame('O');
+	board.endGame('X');
+	board.endGame('O');
+	board.endGame('T');
+	board.endGame('O');
+	board.endGame('4');
+	board.endGame('O');
+
+	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
+	
+	// check if it printed
 }
 }
 
