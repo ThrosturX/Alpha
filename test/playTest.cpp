@@ -158,7 +158,7 @@ TEST(printBoard_test_1)
 	game.print();
 	//restore cout to console again
 	std::cout.rdbuf(coutConsole);
-	CHECK_EQUAL(oss.str(), "X X X \n\nX X X \n\nX X X \n\n");
+	CHECK_EQUAL(oss.str(), "-----\nX X X \n-----\nX X X \n-----\nX X X \n-----\n");
 
 }
 
