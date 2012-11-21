@@ -8,7 +8,7 @@ class Play
 {
 public:
 	Play();
-
+	~Play();
 	void start();	// play tic tac toe
 
 	void printBoard();		// print tic tac toe board
