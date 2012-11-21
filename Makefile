@@ -1,10 +1,11 @@
-.PHONY: build 
+.PHONY: build deploy
 CC=g++
 CFLAGS=
 LDFLAGS=
 BLOC= release/TicTacToe
 TC = $(BLOC) src/*.o 
-SOURCES=src/game.cpp src/TicTacToe.cpp src/Play.cpp
+SOURCES=src/TicTacToe.cpp src/Play.cpp
+EXE=src/game.cpp
 TESTS=test/tests.cpp
 NAME=BoardGame
 NC=\033[0m # no color
@@ -13,11 +14,24 @@ green=\033[0;32m
 
 lib=-L./UnitTest++/ -lUnitTest++
 
-OPS= throstur11@ru.is
-comp_failed:= echo "Compilation failed!!" | mutt -s "Build failed -- Compilation Error!" $(OPS)
+#Obsolete
+#OPS= throstur11@ru.is
+#comp_failed:= echo "Compilation failed!!" | mutt -s "Build failed -- Compilation Error!" $(OPS)
 
 all:
 	$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib)
+
+deploy:
+	@echo "\n$(info)Updating software...$(NC)\n"
+	@git pull	
+	@echo "\n$(info)Running tests...$(NC)\n"
+	$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) 
+	@echo "\n$(info)Preparing build...$(NC)\n"
+	@rm -rf $(TC)
+	@echo "\n$(info)Deploying software...$(NC)\n"
+	$(CC) $(SOURCES) $(EXE) -o $(BLOC)
+	@rm -rf src/*.o 
+	@echo "\n$(green)Software has been deployed.$(NC)\n"
 
 checkin:
 	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib)
