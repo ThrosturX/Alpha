@@ -51,6 +51,12 @@ void TicTacToe::addSymbol(char s, int x, int y)
 // prints the board
 void TicTacToe::print()
 {
+	for(int i = 0; i<3; i++){
+		for(int j = 0; j<3; j++){
+			cout << board[i][j] << " ";
+		}
+		cout << "\n\n";
+	}
 
 }
 
