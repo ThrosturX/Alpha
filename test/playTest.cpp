@@ -64,6 +64,36 @@ TEST(clear)
 	board.clear();
 	CHECK_ARRAY2D_CLOSE(arr_correct,board.getBoard(),3,3, 0);
 }
+
+TEST(fullBoard_test_1)
+{
+	TicTacToe game;
+	game.addSymbol('X', 0, 0);
+	game.addSymbol('X', 0, 1);
+	game.addSymbol('O', 0, 2);
+	game.addSymbol('O', 1, 0);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('X', 1, 2);
+	game.addSymbol('X', 2, 0);
+	game.addSymbol('X', 2, 1);
+	game.addSymbol('O', 2, 2);
+	CHECK_EQUAL(game.fullBoard(), true);
+}
+
+TEST(fullBoard_test_2)
+{
+	TicTacToe game;
+	game.addSymbol('O', 0, 0);
+	game.addSymbol('O', 0, 1);
+	game.addSymbol('O', 0, 2);
+	game.addSymbol('O', 1, 0);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 1, 2);
+	game.addSymbol('O', 2, 0);
+	game.addSymbol('O', 2, 1);
+	CHECK_EQUAL(game.fullBoard(), false);
+>>>>>>> 2186294b52e149c472433c679f1e431d2a05f9b2
+}
 }
 
 int main()
