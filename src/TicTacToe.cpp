@@ -37,23 +37,46 @@ void TicTacToe::endGame(char p)
 	{
 		// winner
 		case 'X':
-			score[0]++;
+			++score[0];
 			break;
 		case 'O':
-			score[1]++;
+			++score[1];
 			break;
 
 		// no winner
 		case 'T':
 		default:
-			score[2]++;
+			++score[2];
 			break;
 	}
 }
 
-int* TicTacToe::getScore()
+int TicTacToe::getScore(int i)
 {
-	return score;
+	if (i<3 && i>=0)
+		return score[i];
+	else return -1;
+}
+
+int TicTacToe::getScore(char p)
+{
+	switch (p)
+	{
+		case 'X':
+			return score[0];
+			break;
+		case 'O':
+			return score[1];
+			break;
+		case 'T':
+			return score[2];
+			break;
+		default:
+			return 0;
+			break;
+	}
+
+	return 0;
 }
 
 // places player s's symbol on the board

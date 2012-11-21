@@ -13,7 +13,9 @@ public:
 	void endGame(char p);
 	void addSymbol(char s, int x, int y);
 	bool fullBoard();
-	int* getScore();
+	int getScore(int i);
+	int getScore(char p);
+	char* getVersion();
 
 private:
 	char board[3][3];

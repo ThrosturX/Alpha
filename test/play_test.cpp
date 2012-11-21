@@ -4,7 +4,7 @@
 
 namespace
 {
-/*TEST(printScore_1)
+TEST(printScore_1)
 {
 	// redirect output	
 	std::ostringstream oss;
@@ -62,7 +62,7 @@ TEST(printWinner_1)
 	
 	//restore cout to console again
 	std::cout.rdbuf(coutConsole);
-}*/
+}
 
 /*TEST(printBoard_test_1)
 {

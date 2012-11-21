@@ -86,7 +86,13 @@ TEST(getScore_1)
 
 	int score[3] = {1, 0, 0};
 
-	CHECK_ARRAY_EQUAL(score, game.getScore(), 3);
+	int got[3];
+
+	got[0] = game.getScore(0);
+	got[1] = game.getScore(1);
+	got[2] = game.getScore(2);
+
+	CHECK_ARRAY_EQUAL(score, got, 3);
 }
 
 TEST(getScore_2)
@@ -101,7 +107,13 @@ TEST(getScore_2)
 
 	int score[3] = {1,3,1};
 
-	CHECK_ARRAY_EQUAL(score, game.getScore(), 3);
+	int got[3];
+
+	got[0] = game.getScore(0);
+	got[1] = game.getScore(1);
+	got[2] = game.getScore(2);
+
+	CHECK_ARRAY_EQUAL(score, got, 3);
 }
 
 TEST(getScore_3)
@@ -115,9 +127,34 @@ TEST(getScore_3)
 	game.endGame('O');
 	game.endGame('T');
 
-	int wantScore[3] = {3,2,1};
-	int* gotScore = game.getScore();
+	int got[3];
 
+	got[0] = game.getScore('X');
+	got[1] = game.getScore('O');
+	got[2] = game.getScore('T');
+
+	int wantScore[3] = {3,2,1};
+
+	CHECK_ARRAY_EQUAL(wantScore, got, 3);
+}
+
+TEST(getScore_4)
+{
+	TicTacToe* game = new TicTacToe;
+	
+	game->endGame('O');
+
+	int wantScore[3] = {0,1,0};
+
+	int got[3];
+
+	got[0] = game->getScore(0);
+	got[1] = game->getScore('O');
+	got[2] = game->getScore(2);
+
+	CHECK_ARRAY_EQUAL(wantScore, got, 3);
+	
+	delete game;
 }
 
 TEST(winner_test_1)
@@ -264,7 +301,13 @@ TEST(endGame_1)
 
 	board.endGame(winner);
 
-	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
+	int got[3];
+
+	got[0] = board.getScore('X');
+	got[1] = board.getScore('O');
+	got[2] = board.getScore('T');
+
+	CHECK_ARRAY_EQUAL(score, got, 3);		
 }
 
 TEST(endGame_2)
@@ -280,7 +323,13 @@ TEST(endGame_2)
 	board.endGame('O');
 	board.endGame('O');
 
-	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
+	int got[3];
+
+	got[0] = board.getScore('X');
+	got[1] = board.getScore('O');
+	got[2] = board.getScore('T');
+
+	CHECK_ARRAY_EQUAL(score, got, 3);		
 }
 
 TEST(endGame_3)
@@ -298,7 +347,13 @@ TEST(endGame_3)
 	board.endGame('4');
 	board.endGame('O');
 
-	CHECK_ARRAY_EQUAL(score, board.getScore(), 3);		
+	int got[3];
+
+	got[0] = board.getScore('X');
+	got[1] = board.getScore('O');
+	got[2] = board.getScore('T');
+
+	CHECK_ARRAY_EQUAL(score, got, 3);		
 }
 
 }

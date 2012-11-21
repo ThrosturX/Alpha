@@ -18,7 +18,7 @@ public:
 	void getInput();			// get input from user
 
 
-	TicTacToe getGame();
+	TicTacToe& getGame();
 
 private:
 	TicTacToe* game;
