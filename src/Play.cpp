@@ -32,7 +32,7 @@ void Play::printBoard()
 */
 void Play::printScore()
 {
-	int* score = game.getScore();
+	int* score = game->getScore();
 
 	cout << "The score is:" << endl
 		<< "\tX\tO\tTie" << endl
