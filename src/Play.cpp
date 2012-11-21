@@ -13,7 +13,7 @@ void Play::start()
 {
 
 }
-
+/*
 void Play::printBoard()
 {
 	for(int i = 0; i<3; i++){
@@ -25,7 +25,7 @@ void Play::printBoard()
 	}
 	cout << "-----\n";
 }
-
+*/
 void Play::printScore()
 {
 
@@ -38,10 +38,76 @@ void Play::printWinner(char p)
 
 void Play::getInput()
 {
+    while(!(getGame().fullBoard()))
+    {
+        char a;
+        int y;
+        cout << "Player 1's Turn " << endl;
+        cout << "please enter the column name (A,B,C) and the row number of where you'd like to play \n";
+        cout << "For example, A 2 or B 0" << endl;
+        cin >> a,y;
+         while(!correctInput(a,y) || exists(a-65,y))
+        {
+            if(!correctInput(a,y))
+            {
+                cout << "Please enter your input in the right format. Example A 2 or B 0" << endl;
+                cin >> a >> y;
+            }
+
+            if(exists(a-65,y) && correctInput(a,y))
+            {
+                cout << "Invalid play, please try again" << endl;
+                cin >> a >> y;
+            }
+        }
+
+        getGame().addSymbol('X',a-65,y); //a - 65 because of ASCII
+
+        cout << "Player 2's Turn " << endl;
+        cout << "please enter the column name (A,B,C) and the row number of where you'd like to play \n";
+        cout << "For example, A 2 or B 0" << endl;
+        cin >> a,y;
+        while(!correctInput(a,y) || exists(a-65,y))
+        {
+            if(!correctInput(a,y))
+            {
+                cout << "Please enter your input in the right format. Example A 2 or B 0" << endl;
+                cin >> a >> y;
+            }
+
+            if(exists(a-65,y) && correctInput(a,y))
+            {
+                cout << "Invalid play, please try again" << endl;
+                cin >> a >> y;
+            }
+        }
+        getGame().addSymbol('O',a-65,y);
+
+    }
 
 }
 
 TicTacToe Play::getGame()
 {
 	return game;
+}
+
+bool Play::correctInput(char a,int y)
+{
+    if(a != ('A','B','C') && y != (0,1,2))
+        return false;
+    else
+        return true;
+}
+
+bool Play::exists(int x,int y)
+{
+    if(x > 2 || x < 0 || y > 2 || y < 0)
+        return false;
+
+    else if(getGame().getBoard()[x][y] != ' ')
+        return false;
+
+    else
+        return true;
 }

@@ -40,7 +40,7 @@ char** TicTacToe::getBoard()
 void TicTacToe::endGame(char t)
 {
 //	print();
-	
+
 	if (t == 'X' || t == 'O')
 		cout << "Player " << t << " wins!" << endl << endl;
 	else
@@ -155,26 +155,6 @@ bool TicTacToe::fullBoard()
 // logic for a player to move
 void TicTacToe::playerInput(char &p)
 {
-	//Oli is doing this
-	while(p!='X' && p!= 'O')
-	{
-	    cout << "Invalid character, please enter either X or O " << endl;
-	    cin >> p;
-	}
-	char a;
-	int y;
-
-	cout << "please enter the column name (A,B,C) and the row number of where you'd like to play \n";
-	cout << "For example, A 2 or B 0" << endl;
-    cin >> a >> y;
-
-    while(a != ('A','B','C') && y != (0,1,2))
-    {
-        cout << "Please enter your input in the right format. Example A 2 or B 0" << endl;
-        cin >> a >> y;
-    }
-    int x = a - 65; //converts A B C to 0 1 2
-    addSymbol(p,x,y);
 
 
 
