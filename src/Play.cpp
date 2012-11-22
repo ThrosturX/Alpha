@@ -16,6 +16,37 @@ Play::~Play()
 // spawns a tic tac toe object and manipulates it's logic to play
 void Play::start()
 {
+	// X starts
+	char temp, player = 'X';
+	string s;
+
+	do
+	{
+		printBoard();
+
+		getInput(player);
+
+		// swap players
+		if (player == 'X') player = 'O';
+		else player = 'X';
+	}
+	while(!game->winner(temp) && !game->fullBoard());
+
+	// check who wins
+	if (game->winner(temp))
+		game->endGame(temp);
+	else	// tie
+		game->endGame('T');
+
+	printBoard();
+	printScore();
+
+	cout << "Play again? ";
+	getline(cin, s);	
+
+	if (s.length() > 0 && tolower(s.at(0)) == 'y')
+		start();
+	else cout << "Please come again." << endl << endl;
 }
 
 
@@ -49,60 +80,77 @@ void Play::printWinner(char p)
 		cout << "It's a tie!" << endl << endl;
 }
 
-void Play::getInput()
+void Play::printError(int e)
 {
-    for(int i = 1;i<=2;i++)
-    {
-        while(!(getGame().fullBoard()))
-        {
-            char a;
-            int y;
-            cout << "Player" << i <<"'s Turn " << endl;
-            cout << "please enter the column name (A,B,C) and the row number of where you'd like to play \n";
-            cout << "For example, A 2 or B 0" << endl;
-            cin >> a,y;
-            while(!correctInput(a,y) || exists(a-65,y))
-            {
-                if(!correctInput(a,y))
-                {
-                    cout << "Please enter your input in the right format. Example A 2 or B 0" << endl;
-                    cin >> a >> y;
-                }
+	switch (e)
+	{	
+		case 1:
+			cout << "Please enter your input in the correct format." <<
+			endl << "Example: A 2 or B 0." << endl;
+			break;
+		default:
+			cout << "Unexpected error occurred." << endl;
+			break;
+	}
+}
 
-                if(exists(a-65,y) && correctInput(a,y))
-                {
-                    cout << "Invalid play, please try again" << endl;
-                    cin >> a >> y;
-                }
-            }
+void Play::getInput(char p)
+{
+	bool valid;
+	int x, y;
+	string coord;
 
-        getGame().addSymbol('X',a-65,y); //a - 65 because of ASCII
-        }
-    }
+	cout << "Player " << p << "\'s turn ";
 
+	do
+	{	
+		getline(cin,coord);
+		if (coord.length() < 3)
+		{
+			printError(1);
+			continue;
+		}
+	
+		valid = true;
+
+		// get row
+		char row = tolower(coord.at(0));
+
+		// get collumn	
+		int collumn = coord.at(2) - '0';
+	
+		switch(row)
+		{
+			case 'a':
+				y = 0;
+				break;
+			case 'b':
+				y = 1;
+				break;
+			case 'c':
+				y = 2;
+				break;
+			default:
+				valid = false;
+				break;
+		}
+
+		// normalize array index
+		if (collumn >= 1 && collumn <= 3)
+			x = --collumn;
+
+		if (!valid)
+			printError(1);
+	
+	// addSymbol should be a boolean and return whether or not the thing worked or not. Yo.
+
+	}
+	while(!valid);
+
+	game->addSymbol(p, x, y);
 }
 
 TicTacToe& Play::getGame()
 {
 	return *game;
-}
-
-bool Play::correctInput(char a,int y)
-{
-    if(a != ('A','B','C') && y != (0,1,2))
-        return false;
-    else
-        return true;
-}
-
-bool Play::exists(int x,int y)
-{
-    if(x > 2 || x < 0 || y > 2 || y < 0)
-        return false;
-
-    else if(getGame().getBoard()[x][y] != ' ')
-        return false;
-
-    else
-        return true;
 }
