@@ -129,8 +129,6 @@ int Play::getInput(char p, string coord)
 	bool valid;
 	int x, y;
 
-	//cout << "Player " << p << "\'s turn:" << endl;
-
     while(!valid)
 	{
 		if (coord.length() == 2)
