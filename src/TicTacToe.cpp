@@ -139,17 +139,13 @@ bool TicTacToe::winner(char &p)
 // determine if the board is full
 bool TicTacToe::fullBoard()
 {
-	bool istrue;
-	for(int i = 0; i < 3; i++) {
-		for(int j = 0; j < 3; j++) {
-			if(board[i][j] == 'X' || board[i][j] == 'O') {
-				istrue = true;
-			}
-			else {
-				istrue = false;
-				break;
-			}
+	for (int i=0; i<3; ++i)
+	{
+		for (int j=0; j<3; ++j)
+		{
+			if (board[i][j] == ' ')
+				return false;
 		}
 	}
-	return istrue;
+	return true;
 }

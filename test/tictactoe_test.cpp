@@ -210,6 +210,14 @@ TEST(fullBoard_test_2)
 	game.addSymbol('O', 0, 2);
 	game.addSymbol('O', 1, 0);
 	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 1, 1);
+	game.addSymbol('O', 1, 1);
 	game.addSymbol('O', 1, 2);
 	game.addSymbol('O', 2, 0);
 	game.addSymbol('O', 2, 1);
