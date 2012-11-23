@@ -34,13 +34,14 @@ deploy:
 	@echo "\n$(info)Running tests...$(NC)\n"
 	$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) 
 	@-$(BLOC)
+	@cppcheck --enable=all src
 	@echo "\n$(info)Preparing build...$(NC)\n"
 	@rm -rf $(TC)
 	@echo "\n$(info)Deploying software...$(NC)\n"
 	$(CC) $(SOURCES) $(EXE) -o $(BLOC)
 	@rm -rf src/*.o 
 	@echo "\n$(green)Software has been deployed.$(NC)\n"
-
+	
 checkin:
 	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib)
 	git add $(SOURCES) $(TESTS) Makefile
