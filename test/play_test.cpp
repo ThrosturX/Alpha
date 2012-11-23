@@ -137,7 +137,7 @@ TEST(printError_1)
 
 	game.printError(1);
 
-	CHECK_EQUAL(oss.str(), "Please enter your input in the correct format.\nExample: A 2 or B 0.\n");
+	CHECK_EQUAL(oss.str(), "Please enter your input in the correct format.\nExample: A 2 or B 1.\n");
 
 	//restore cout to console again
 	std::cout.rdbuf(coutConsole);
