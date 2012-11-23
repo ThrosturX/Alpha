@@ -23,9 +23,8 @@ all:
 
 install:
 	@echo "\n$(info)Installing...$(NC)\n"
-	@-mkdir release
 	$(CC) $(SOURCES) $(EXE) -o $(BLOC)
-	@echo "\n$(green) Success!! $(NC)\n"
+	@echo "\n$(green)Success!! $(NC)\n"
 
 deploy:
 	@echo "\n$(info)Updating software...$(NC)\n"
