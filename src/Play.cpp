@@ -27,6 +27,8 @@ void Play::start()
 	{
 		printBoard();
 
+        cout << "Player " << player << "\'s turn:" << endl;
+
 		if (getInput(player, getPos()) == 1)
 		{
 			start();
@@ -127,9 +129,9 @@ int Play::getInput(char p, string coord)
 	bool validColumn, validRow;
 	int x, y;
 
-	cout << "Player " << p << "\'s turn:" << endl;
+	//cout << "Player " << p << "\'s turn:" << endl;
 
-    while(!validColumn && !validRow)
+    while(!validColumn || !validRow)
 	{
         validColumn = false;
         validRow = false;	
@@ -143,20 +145,18 @@ int Play::getInput(char p, string coord)
 			if (coord.at(2) == ' ')
 				coord[2] == coord[1];
 
-			// get row
-			char row = tolower(coord.at(0));
-	
-			// get collumn	
-			int collumn = coord.at(2) - '0';
-	
+            // get collumn  
+            int column = coord.at(2) - '0';
 			// normalize array index
-			if (collumn >= 1 && collumn <= 3)
+			if (column >= 1 && column <= 3)
 			{
 				validColumn = true;
-				x = --collumn;
+				x = --column;
 			}
 
-            if(row >= 'a' || row <= 'c')
+            // get row
+            char row = tolower(coord.at(0));
+            if(row >= 'a' && row <= 'c')
             {
                 y = row-'a';;
                 validRow = true;
@@ -173,10 +173,7 @@ int Play::getInput(char p, string coord)
                     validRow = false;
                     validColumn = false;
                 }
-                    
-
             }
-                
 		}
 		if (coord == "exit" || coord == "quit")
 		{
