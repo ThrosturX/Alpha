@@ -127,7 +127,6 @@ string Play::getPos()
 int Play::getInput(char p, string coord)
 {
 	bool valid;
-	int x, y;
 
     while(!valid)
 	{
