@@ -19,4 +19,3 @@ else
 fi
 
 rm -rf build.log
-touch /tmp/testfile
