@@ -18,6 +18,7 @@ Play::~Play()
 // spawns a tic tac toe object and manipulates it's logic to play
 void Play::start()
 {
+	game->clear();
 	// X starts
 	char temp, player = 'X';
 	string s;
@@ -120,7 +121,7 @@ int Play::getInput(char p)
 	int x, y;
 	string coord;
 
-	cout << "Player " << p << "\'s turn ";
+	cout << "Player " << p << "\'s turn:" << endl;
 
 	do
 	{	
@@ -175,13 +176,8 @@ int Play::getInput(char p)
 		}
 		else if (coord == "reset" || coord == "start again" || coord == "clear")
 		{
-			game->clear();
 			return 1;
 		}
-	
-	
-	// addSymbol should be a boolean and return whether or not the thing worked or not. Yo.
-
 	}
 	while(!valid);
 
