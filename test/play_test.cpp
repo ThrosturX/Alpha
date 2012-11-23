@@ -135,7 +135,7 @@ TEST(printError_1)
 	std::cout.rdbuf(coutConsole);
 }
 
-TEST(printError_1)
+TEST(printError_2)
 {
 	Play game;
 	
@@ -144,9 +144,26 @@ TEST(printError_1)
 	std::streambuf* coutConsole = std::cout.rdbuf();
 	std::cout.rdbuf(oss.rdbuf()); 
 
-	game.printError(1);
+	game.printError(2);
 
-	CHECK_EQUAL(oss.str(), "Please enter your input in the correct format.\nExample: A 2 or B 0.\n");
+	CHECK_EQUAL(oss.str(), "This tile is already taken.\nPlease select a free tile.\n");
+
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
+}
+
+TEST(printError_3)
+{
+	Play game;
+	
+	//redirect cout so we can test the output
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
+
+	game.printError(3);
+
+	CHECK_EQUAL(oss.str(), "Unexpected error occurred.\n");
 
 	//restore cout to console again
 	std::cout.rdbuf(coutConsole);
