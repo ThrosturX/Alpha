@@ -17,6 +17,7 @@ public:
 	int getScore(int i);
 	int getScore(char p);
 	char* getVersion();
+	void resetScore();
 
 private:
 	char board[3][3];

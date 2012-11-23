@@ -159,3 +159,9 @@ bool TicTacToe::fullBoard()
 	}
 	return true;
 }
+
+void TicTacToe::resetScore()
+{
+	for (int i=0; i<3; ++i)
+		score[i] = 0;
+}
