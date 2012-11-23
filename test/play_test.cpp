@@ -177,4 +177,21 @@ TEST(printError_3)
 	std::cout.rdbuf(coutConsole);
 }
 
+TEST(getInput_test_1)
+{
+	Play game;
+	char player = 'O';
+	game.getGame().addSymbol('X', 0, 0);
+	CHECK_EQUAL(0, game.getInput(player, "A2"));
+
+}
+
+TEST(getInput_test_2)
+{
+	Play game;
+	char player = 'O';
+	game.getGame().addSymbol('X', 0, 0);
+	CHECK_EQUAL(1, game.getInput(player, "reset"));
+
+}
 }
