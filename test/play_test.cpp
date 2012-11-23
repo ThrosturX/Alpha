@@ -194,4 +194,5 @@ TEST(getInput_test_2)
 	CHECK_EQUAL(1, game.getInput(player, "reset"));
 
 }
+
 }
