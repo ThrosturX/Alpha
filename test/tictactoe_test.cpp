@@ -83,6 +83,25 @@ TEST(add_symbol_4)
 	CHECK_EQUAL(false, third);
 }
 
+TEST(addSymbol_5)
+{
+	TicTacToe board;
+	
+	char arr_correct[3][3];
+	for (int i=0; i<3; ++i)
+		for (int j=0; j<3; ++j)
+			arr_correct[i][j] = ' ';
+
+	bool first = board.addSymbol('X',-1,0);
+	bool second = board.addSymbol('O',0,4);
+	bool third = board.addSymbol('7',3,3);
+
+	CHECK_ARRAY2D_CLOSE(arr_correct, board.getBoard(),3,3, 0);
+	CHECK_EQUAL(false, first);
+	CHECK_EQUAL(false, second);
+	CHECK_EQUAL(false, third);
+}
+
 TEST(getScore_1)
 {
 	TicTacToe game;
@@ -160,6 +179,31 @@ TEST(getScore_4)
 	CHECK_ARRAY_EQUAL(wantScore, got, 3);
 	
 	delete game;
+}
+
+TEST(resetScore_1)
+{
+	TicTacToe* game = new TicTacToe;
+	
+	for (int i=0; i<100; ++i)
+	{
+		char p = 'T';
+		if (i % 5 == 0)
+			p = 'X';
+	 	else if (i % 3 == 0)
+			p = 'Y';
+		game->endGame(p);
+	}
+
+	game->resetScore();
+
+	int wantScore[3] = {0,0,0};
+	int got[3];
+	
+	for (int i=0; i<3; ++i)
+		got[i] = game->getScore(i);
+
+	CHECK_ARRAY_EQUAL(wantScore, got, 3);
 }
 
 TEST(winner_test_1)
@@ -278,32 +322,6 @@ TEST(getBoard_test_2)
 	CHECK_EQUAL(game.getBoard()[2][2], board[2][2]);
 }
 
-/*
-TEST(printBoard_test_1)
-{
-	TicTacToe game;
-	game.addSymbol('X', 0, 0);
-	game.addSymbol('X', 0, 1);
-	game.addSymbol('X', 0, 2);
-	game.addSymbol('X', 1, 0);
-	game.addSymbol('X', 1, 1);
-	game.addSymbol('X', 1, 2);
-	game.addSymbol('X', 2, 0);
-	game.addSymbol('X', 2, 1);
-	game.addSymbol('X', 2, 2);
-
-	//redirect cout so we can test the output
-	std::ostringstream oss;
-	std::streambuf* coutConsole = std::cout.rdbuf();
-	std::cout.rdbuf(oss.rdbuf()); 
-	game.print();
-	//restore cout to console again
-	std::cout.rdbuf(coutConsole);
-	CHECK_EQUAL(oss.str(), "-----\nX X X \n-----\nX X X \n-----\nX X X \n-----\n");
-
-}
-*/
-
 TEST(endGame_1)
 {
 	TicTacToe board;
@@ -370,9 +388,3 @@ TEST(endGame_3)
 }
 
 }
-/*
-int main()
-{
-	return UnitTest::RunAllTests(); 
-}
-*/

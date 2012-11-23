@@ -87,6 +87,12 @@ int TicTacToe::getScore(char p)
 // places player s's symbol on the board
 bool TicTacToe::addSymbol(char s, int x, int y)
 {
+	if (x > 2 || x < 0)
+		return false;
+
+	if (y > 2 || y < 0)
+		return false;
+
 	if (board[x][y] == ' ')
 	{
 		board[x][y] = s;
@@ -152,4 +158,10 @@ bool TicTacToe::fullBoard()
 		}
 	}
 	return true;
+}
+
+void TicTacToe::resetScore()
+{
+	for (int i=0; i<3; ++i)
+		score[i] = 0;
 }
