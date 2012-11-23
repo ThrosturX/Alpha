@@ -83,6 +83,25 @@ TEST(add_symbol_4)
 	CHECK_EQUAL(false, third);
 }
 
+TEST(addSymbol_5)
+{
+	TicTacToe board;
+	
+	char arr_correct[3][3];
+	for (int i=0; i<3; ++i)
+		for (int j=0; j<3; ++j)
+			arr_correct[i][j] = ' ';
+
+	bool first = board.addSymbol('X',-1,0);
+	bool second = board.addSymbol('O',0,4);
+	bool third = board.addSymbol('7',3,3);
+
+	CHECK_ARRAY2D_CLOSE(arr_correct, board.getBoard(),3,3, 0);
+	CHECK_EQUAL(false, first);
+	CHECK_EQUAL(false, second);
+	CHECK_EQUAL(false, third);
+}
+
 TEST(getScore_1)
 {
 	TicTacToe game;
