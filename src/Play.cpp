@@ -125,52 +125,60 @@ int Play::getInput(char p)
 	do
 	{	
 		getline(cin,coord);
-		if (coord.length() < 3)
+		if (coord.length() == 2)
 		{
-			printError(1);
-			continue;
+			coord = coord + coord[1];
+		}
+		if (coord.length() == 3)
+		{
+			// prevent trailing space error
+			if (coord.at(2) == ' ')
+				coord[2] == coord[1];
+
+			// get row
+			char row = tolower(coord.at(0));
+	
+			// get collumn	
+			int collumn = coord.at(2) - '0';
+	
+			// normalize array index
+			if (collumn >= 1 && collumn <= 3)
+			{
+				valid = true;
+				x = --collumn;
+			}
+
+			switch(row)
+			{
+				case 'a':
+					y = 0;
+					break;
+				case 'b':
+					y = 1;
+					break;
+				case 'c':
+					y = 2;
+					break;
+				default:
+					valid = false;
+					break;
+			}
+
+			if (!valid)
+				printError(1);
+				continue;
 		}
 		else if (coord == "exit" || coord == "quit")
 		{
 			cout << "Thank you for playing." << endl;
 			exit(0);
 		}
-		else if (coord == "reset" || coord == "start again")
+		else if (coord == "reset" || coord == "start again" || coord == "clear")
 		{
 			game->clear();
 			return 1;
 		}
 	
-		valid = true;
-
-		// get row
-		char row = tolower(coord.at(0));
-
-		// get collumn	
-		int collumn = coord.at(2) - '0';
-	
-		switch(row)
-		{
-			case 'a':
-				y = 0;
-				break;
-			case 'b':
-				y = 1;
-				break;
-			case 'c':
-				y = 2;
-				break;
-			default:
-				valid = false;
-				break;
-		}
-
-		// normalize array index
-		if (collumn >= 1 && collumn <= 3)
-			x = --collumn;
-
-		if (!valid)
-			printError(1);
 	
 	// addSymbol should be a boolean and return whether or not the thing worked or not. Yo.
 
