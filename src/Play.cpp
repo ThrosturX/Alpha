@@ -27,7 +27,7 @@ void Play::start()
 	{
 		printBoard();
 
-		if (getInput(player) == 1)
+		if (getInput(player, getPos()) == 1)
 		{
 			start();
 			return;
@@ -115,17 +115,24 @@ void Play::printError(int e)
 	}
 }
 
-int Play::getInput(char p)
+string Play::getPos()
 {
-	bool valid;
+    string input;
+    getline(cin, input);
+    return input;
+}
+
+int Play::getInput(char p, string coord)
+{
+	bool validColumn, validRow;
 	int x, y;
-	string coord;
 
 	cout << "Player " << p << "\'s turn:" << endl;
 
-	do
-	{	
-		getline(cin,coord);
+    while(!validColumn && !validRow)
+	{
+        validColumn = false;
+        validRow = false;	
 		if (coord.length() == 2)
 		{
 			coord = coord + coord[1];
@@ -145,48 +152,44 @@ int Play::getInput(char p)
 			// normalize array index
 			if (collumn >= 1 && collumn <= 3)
 			{
-				valid = true;
+				validColumn = true;
 				x = --collumn;
 			}
 
-			switch(row)
-			{
-				case 'a':
-					y = 0;
-					break;
-				case 'b':
-					y = 1;
-					break;
-				case 'c':
-					y = 2;
-					break;
-				default:
-					valid = false;
-					break;
-			}
+            if(row >= 'a' || row <= 'c')
+            {
+                y = row-'a';;
+                validRow = true;
+            }
 
-			if (!valid)
+			if (!validColumn || !validRow)
 				printError(1);
-				continue;
+			else
+            {
+                bool addedSymbol = game->addSymbol(p, x, y);
+                if(!addedSymbol)
+                {
+                    printError(2);
+                    validRow = false;
+                    validColumn = false;
+                }
+                    
+
+            }
+                
 		}
-		else if (coord == "exit" || coord == "quit")
+		if (coord == "exit" || coord == "quit")
 		{
 			cout << "Thank you for playing." << endl;
 			exit(0);
 		}
-		else if (coord == "reset" || coord == "start again" || coord == "clear")
+		if (coord == "reset" || coord == "start again" || coord == "clear")
 		{
 			return 1;
 		}
+        if(!validColumn || !validRow)
+            coord = getPos();
 	}
-	while(!valid);
-
-	while (!game->addSymbol(p, x, y))
-	{
-		printError(2);
-		getInput(p);	
-	}
-	
 	return 0;
 }
 
