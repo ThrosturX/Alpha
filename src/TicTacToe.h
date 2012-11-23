@@ -12,7 +12,7 @@ public:
 	char getBoardElement(int x, int y);
 	bool winner(char &p);
 	void endGame(char p);
-	void addSymbol(char s, int x, int y);
+	bool addSymbol(char s, int x, int y);
 	bool fullBoard();
 	int getScore(int i);
 	int getScore(char p);

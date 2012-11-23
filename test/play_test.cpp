@@ -56,9 +56,40 @@ TEST(printWinner_1)
 	Play player;
 
 	player.printWinner('X');
-///UNCOMMENT THIS!
-//	CHECK_EQUAL(oss.str(), "Player X wins!/n/n");	
+	CHECK_EQUAL(oss.str(), "Player X wins!\n\n");	
 
+	
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
+}
+
+TEST(printWinner_2)
+{
+	// redirect output	
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
+
+	Play player;
+
+	player.printWinner('O');
+	CHECK_EQUAL(oss.str(), "Player O wins!\n\n");	
+	
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
+}
+
+TEST(printWinner_3)
+{
+	// redirect output	
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
+
+	Play player;
+
+	player.printWinner('T');
+	CHECK_EQUAL(oss.str(), "It's a tie!\n\n");	
 	
 	//restore cout to console again
 	std::cout.rdbuf(coutConsole);
@@ -85,7 +116,40 @@ TEST(printBoard_test_1)
 	//restore cout to console again
 	std::cout.rdbuf(coutConsole);
 	CHECK_EQUAL(oss.str(), "-----\nX X X \n-----\nX X X \n-----\nX X X \n-----\n");
+}
+	
+TEST(printError_1)
+{
+	Play game;
+	
+	//redirect cout so we can test the output
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
 
+	game.printError(1);
+
+	CHECK_EQUAL(oss.str(), "Please enter your input in the correct format.\nExample: A 2 or B 0.\n");
+
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
+}
+
+TEST(printError_1)
+{
+	Play game;
+	
+	//redirect cout so we can test the output
+	std::ostringstream oss;
+	std::streambuf* coutConsole = std::cout.rdbuf();
+	std::cout.rdbuf(oss.rdbuf()); 
+
+	game.printError(1);
+
+	CHECK_EQUAL(oss.str(), "Please enter your input in the correct format.\nExample: A 2 or B 0.\n");
+
+	//restore cout to console again
+	std::cout.rdbuf(coutConsole);
 }
 
 }

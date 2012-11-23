@@ -88,6 +88,9 @@ void Play::printError(int e)
 			cout << "Please enter your input in the correct format." <<
 			endl << "Example: A 2 or B 0." << endl;
 			break;
+		case 2:
+			cout << "This tile is already taken." <<
+			endl << "Please select a free tile." << endl;
 		default:
 			cout << "Unexpected error occurred." << endl;
 			break;
@@ -147,7 +150,11 @@ void Play::getInput(char p)
 	}
 	while(!valid);
 
-	game->addSymbol(p, x, y);
+	while (!game->addSymbol(p, x, y))
+	{
+		printError(2);
+		getInput(p);	
+	}
 }
 
 TicTacToe& Play::getGame()
