@@ -24,7 +24,11 @@ void Play::start()
 	{
 		printBoard();
 
-		getInput(player);
+		if (getInput(player) == 1)
+		{
+			start();
+			return;
+		}
 
 		// swap players
 		if (player == 'X') player = 'O';
@@ -98,7 +102,7 @@ void Play::printError(int e)
 	}
 }
 
-void Play::getInput(char p)
+int Play::getInput(char p)
 {
 	bool valid;
 	int x, y;
@@ -111,21 +115,18 @@ void Play::getInput(char p)
 		getline(cin,coord);
 		if (coord.length() < 3)
 		{
-			if (coord == "exit" || coord == "quit")
-			{
-				cout << "Thank you for playing." << endl;
-				exit(0);
-			}
-			if (coord == "reset" || "start again")
-			{
-				game->clear();
-			}
-
-			else
-			{
-				printError(1);
-				continue;
-			}
+			printError(1);
+			continue;
+		}
+		else if (coord == "exit" || coord == "quit")
+		{
+			cout << "Thank you for playing." << endl;
+			exit(0);
+		}
+		else if (coord == "reset" || coord == "start again")
+		{
+			game->clear();
+			return 1;
 		}
 	
 		valid = true;
@@ -169,6 +170,8 @@ void Play::getInput(char p)
 		printError(2);
 		getInput(p);	
 	}
+	
+	return 0;
 }
 
 TicTacToe& Play::getGame()

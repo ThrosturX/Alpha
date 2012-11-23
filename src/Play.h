@@ -20,7 +20,7 @@ public:
 	void printScore();
 	void printWinner(char p);
 	void printError(int e);		// print error e
-	void getInput(char p);			// get input from user
+	int getInput(char p);			// get input from user
 
 
 	TicTacToe& getGame();

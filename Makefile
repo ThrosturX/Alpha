@@ -33,6 +33,7 @@ deploy:
 	@-mkdir release
 	@echo "\n$(info)Running tests...$(NC)\n"
 	$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) 
+	@-$(BLOC)
 	@echo "\n$(info)Preparing build...$(NC)\n"
 	@rm -rf $(TC)
 	@echo "\n$(info)Deploying software...$(NC)\n"
