@@ -1,5 +1,7 @@
 #include "Play.h"
 #include "TicTacToe.h"
+#include <iomanip>
+
 
 using namespace std;
 
@@ -52,14 +54,24 @@ void Play::start()
 
 void Play::printBoard()
 {
+    int length = 13;
+    cout << "   A   B   C\n";
 	for(int i = 0; i<3; i++){
-		cout << "-----" << endl;
+        if(i != 0)
+        {
+            cout << setfill(' ') << setw(length)  << "--- --- ---";
+            cout << endl;
+        }
+        cout << i+1 << ": ";
 		for(int j = 0; j<3; j++){
-			cout << getGame().getBoardElement(i, j) << " ";
+            if(j != 2)
+                cout << getGame().getBoardElement(i, j) << " | ";
+            else
+		        cout << getGame().getBoardElement(i, j);
 		}
 		cout << "\n";
 	}
-	cout << "-----\n";
+    cout << "\n";
 }
 void Play::printScore()
 {
