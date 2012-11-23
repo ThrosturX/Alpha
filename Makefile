@@ -43,6 +43,7 @@ deploy:
 
 checkin:
 	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib)
+	@$(BLOC)
 	git add $(SOURCES) $(TESTS) Makefile
 	git commit -am "$(MAKECMDGOALS)" 
 	git push
