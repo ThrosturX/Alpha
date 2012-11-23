@@ -27,6 +27,8 @@ void Play::start()
 	{
 		printBoard();
 
+        cout << "Player " << player << "\'s turn:" << endl;
+
 		if (getInput(player, getPos()) == 1)
 		{
 			start();
@@ -124,59 +126,34 @@ string Play::getPos()
 
 int Play::getInput(char p, string coord)
 {
-	bool validColumn, validRow;
+	bool valid;
 	int x, y;
 
-	cout << "Player " << p << "\'s turn:" << endl;
-
-    while(!validColumn && !validRow)
+    while(!valid)
 	{
-        validColumn = false;
-        validRow = false;	
 		if (coord.length() == 2)
 		{
 			coord = coord + coord[1];
 		}
 		if (coord.length() == 3)
 		{
+            int column = coord.at(2) - '0';
+            char row = tolower(coord.at(0));
+
 			// prevent trailing space error
 			if (coord.at(2) == ' ')
 				coord[2] == coord[1];
-
-			// get row
-			char row = tolower(coord.at(0));
-	
-			// get collumn	
-			int collumn = coord.at(2) - '0';
-	
-			// normalize array index
-			if (collumn >= 1 && collumn <= 3)
+            // normalize array index
+			if (column >= 1 && column <= 3 && row >= 'a' && row <= 'c')
 			{
-				validColumn = true;
-				x = --collumn;
-			}
-
-            if(row >= 'a' || row <= 'c')
-            {
-                y = row-'a';;
-                validRow = true;
-            }
-
-			if (!validColumn || !validRow)
-				printError(1);
-			else
-            {
-                bool addedSymbol = game->addSymbol(p, x, y);
+                bool addedSymbol = game->addSymbol(p, --column, row-'a');
                 if(!addedSymbol)
-                {
                     printError(2);
-                    validRow = false;
-                    validColumn = false;
-                }
-                    
-
-            }
-                
+                else
+                    valid = true;
+			}
+            else
+                printError(1);
 		}
 		if (coord == "exit" || coord == "quit")
 		{
@@ -184,11 +161,13 @@ int Play::getInput(char p, string coord)
 			exit(0);
 		}
 		if (coord == "reset" || coord == "start again" || coord == "clear")
-		{
-			return 1;
-		}
-        if(!validColumn || !validRow)
+        {
+            return 1;
+        }
+        if(!valid)
+        {
             coord = getPos();
+        }
 	}
 	return 0;
 }
