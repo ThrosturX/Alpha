@@ -100,6 +100,10 @@ void Play::printError(int e)
 			cout << "Please enter your input in the correct format." <<
 			endl << "Example: A 2 or B 0." << endl;
 			break;
+		case 2:
+			cout << "This tile is already taken." <<
+			endl << "Please select a free tile." << endl;
+			break;
 		default:
 			cout << "Unexpected error occurred." << endl;
 			break;
@@ -119,8 +123,21 @@ void Play::getInput(char p)
 		getline(cin,coord);
 		if (coord.length() < 3)
 		{
-			printError(1);
-			continue;
+			if (coord == "exit" || coord == "quit")
+			{
+				cout << "Thank you for playing." << endl;
+				exit(0);
+			}
+			if (coord == "reset" || "start again")
+			{
+				game->clear();
+			}
+
+			else
+			{
+				printError(1);
+				continue;
+			}
 		}
 	
 		valid = true;
@@ -159,7 +176,11 @@ void Play::getInput(char p)
 	}
 	while(!valid);
 
-	game->addSymbol(p, x, y);
+	while (!game->addSymbol(p, x, y))
+	{
+		printError(2);
+		getInput(p);	
+	}
 }
 
 TicTacToe& Play::getGame()

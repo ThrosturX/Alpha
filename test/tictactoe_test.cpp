@@ -17,9 +17,10 @@ TEST(add_symbol_1)
 
 	arr_correct[0][0] = 'X';
 
-	board.addSymbol('X',0,0);
+	bool got = board.addSymbol('X',0,0);
 	
 	CHECK_ARRAY2D_CLOSE(arr_correct, board.getBoard(),3,3, 0);
+	CHECK_EQUAL(true, got);
 }
 
 TEST(add_symbol_2)
@@ -35,9 +36,10 @@ TEST(add_symbol_2)
 
 	arr_correct[2][1] = 'O';
 
-	board.addSymbol('O',2,1);
+	bool got = board.addSymbol('O',2,1);
 	
 	CHECK_ARRAY2D_CLOSE(arr_correct, board.getBoard(),3,3, 0);
+	CHECK_EQUAL(true,got);
 }
 
 TEST(add_symbol_3)
@@ -53,9 +55,10 @@ TEST(add_symbol_3)
 
 	arr_correct[0][2] = 'X';
 
-	board.addSymbol('X',0,2);
+	bool got = board.addSymbol('X',0,2);
 	
 	CHECK_ARRAY2D_CLOSE(arr_correct, board.getBoard(),3,3, 0);
+	CHECK_EQUAL(true,got);
 }
 
 TEST(add_symbol_4)
@@ -70,12 +73,14 @@ TEST(add_symbol_4)
 	arr_correct[0][1] = 'X';
 	arr_correct[1][1] = 'O';
 
-	board.addSymbol('X',0,1);
-	board.addSymbol('O',1,1);
-	board.addSymbol('X',1,1);	// shouldn't change anything
+	bool first = board.addSymbol('X',0,1);
+	bool second = board.addSymbol('O',1,1);
+	bool third = board.addSymbol('X',1,1);	// shouldn't change anything
 
 	CHECK_ARRAY2D_CLOSE(arr_correct, board.getBoard(),3,3, 0);
-
+	CHECK_EQUAL(true, first);
+	CHECK_EQUAL(true, second);
+	CHECK_EQUAL(false, third);
 }
 
 TEST(getScore_1)
