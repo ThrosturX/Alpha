@@ -103,7 +103,7 @@ void Play::printError(int e)
 	{	
 		case 1:
 			cout << "Please enter your input in the correct format." <<
-			endl << "Example: A 2 or B 0." << endl;
+			endl << "Example: A 2 or B 1." << endl;
 			break;
 		case 2:
 			cout << "This tile is already taken." <<
