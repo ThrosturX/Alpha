@@ -21,6 +21,11 @@ lib=-L./UnitTest++/ -lUnitTest++
 all:
 	$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib)
 
+install:
+	@echo "\n$(info)Installing...$(NC)\n"
+	$(CC) $(SOURCES) $(EXE) -o $(BLOC)
+	@echo "\n$(green) Success!! $(NC)\n"
+
 deploy:
 	@echo "\n$(info)Updating software...$(NC)\n"
 	@git pull	
