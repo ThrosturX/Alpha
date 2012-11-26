@@ -67,6 +67,7 @@ test-build:
 	rm -rf $(TC)
 	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) 
 	@$(BLOC)
+	@cppcheck --enable=all src
 	@$(MAKE) e2e
 	@rm -rf $(TC)	
 	@echo ""
