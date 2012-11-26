@@ -16,7 +16,6 @@ public:
 	bool fullBoard();
 	int getScore(int i);
 	int getScore(char p);
-	char* getVersion();
 	void resetScore();
 
 private:

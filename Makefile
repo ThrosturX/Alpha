@@ -8,15 +8,16 @@ SOURCES=src/TicTacToe.cpp src/Play.cpp
 EXE=src/game.cpp
 TESTS=test/tests.cpp
 NAME=BoardGame
+CMP=test/e2e/test.sh
+TBASE=test/e2e/base
+TRES=test/e2e/res
 NC=\033[0m # no color
 info=\033[0;33m
 green=\033[0;32m
+blue=\033[0;34m
+col=\033[0;35m
 
 lib=-L./UnitTest++/ -lUnitTest++
-
-#Obsolete
-#OPS= throstur11@ru.is
-#comp_failed:= echo "Compilation failed!!" | mutt -s "Build failed -- Compilation Error!" $(OPS)
 
 all:
 	$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib)
@@ -28,10 +29,10 @@ install:
 	@echo "\n$(green)Success!! $(NC)\n"
 
 deploy:
-	@echo "\n$(info)Updating software...$(NC)\n"
+	@echo "\n$(info)Updating software...$(col)\n"
 	@git pull	
 	@-mkdir release
-	@echo "\n$(info)Running tests...$(NC)\n"
+	@echo "\n$(info)Running tests...$(col)\n"
 	$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) 
 	@-$(BLOC)
 	@cppcheck --enable=all src
@@ -40,6 +41,9 @@ deploy:
 	@echo "\n$(info)Deploying software...$(NC)\n"
 	$(CC) $(SOURCES) $(EXE) -o $(BLOC)
 	@rm -rf src/*.o 
+	@echo "\n$(blue)Running End-To-End tests...$(col)\n"
+	@$(CMP) 
+	@echo "\n$(blue)All End-To-End tests passed!$(NC)\n"
 	@echo "\n$(green)Software has been deployed.$(NC)\n"
 	
 checkin:
@@ -55,7 +59,7 @@ build:
 	@rm -rf $(TC)
 	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) 
 	@-$(BLOC)
-	@rm -rf $(TC)
+	@rm -rf $(TC) $(BLOC)
 	@echo ""
 
 test-build:
@@ -63,8 +67,13 @@ test-build:
 	rm -rf $(TC)
 	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) 
 	@$(BLOC)
+	@$(MAKE) e2e
 	@rm -rf $(TC)	
 	@echo ""
+
+e2e:
+	@echo "\nRunning End-To-End tests...\n"
+	$(CMP) 
 
 clean:
 	rm -rf $(TC) build.log
