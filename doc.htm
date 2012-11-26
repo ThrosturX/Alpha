@@ -425,14 +425,16 @@ cd Games             # traverse into Games directory</span></p>
 <h3><span lang=EN-US>64-bit Windows:</span></h3>
 
 <p class=MsoNormal><span lang=EN-US>Download the executable from here:<br>
-<a href="https://github.com/downloads/ThrosturX/Alpha/TicTacToe.exe">https://github.com/downloads/ThrosturX/Alpha/TicTacToe.exe</a>
-</span></p>
+</span><a href="https://github.com/downloads/ThrosturX/Alpha/TicTacToe.exe"><span
+lang=EN-US>https://github.com/downloads/ThrosturX/Alpha/TicTacToe.exe</span></a><span
+lang=EN-US> </span></p>
 
 <h3><span lang=EN-US>64-bit Ubuntu</span></h3>
 
 <p class=MsoNormal><span lang=EN-US>Download the binary file from here:<br>
-<a href="https://github.com/downloads/ThrosturX/Alpha/TicTacToe">https://github.com/downloads/ThrosturX/Alpha/TicTacToe</a>
-</span></p>
+</span><a href="https://github.com/downloads/ThrosturX/Alpha/TicTacToe"><span
+lang=EN-US>https://github.com/downloads/ThrosturX/Alpha/TicTacToe</span></a><span
+lang=EN-US> </span></p>
 
 <h3><span lang=EN-US>Other operating systems:</span></h3>
 
@@ -487,7 +489,7 @@ margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>mkd
 ../TicTacToe   # create TicTacToe directory<br>
 cp release/TicTacToe ../TicTacToe/TicTacToe # copy game<br>
 cd ..                # traverse back to Games<br>
-rm –rf Alpha             # remove sources<br clear=all style='page-break-before:
+rm –rf Alpha              # remove sources<br clear=all style='page-break-before:
 always'>
 </span></p>
 
@@ -495,8 +497,8 @@ always'>
 
 <h2><a name="_Toc341447817"><span lang=EN-US>Playing Tic Tac Toe</span></a></h2>
 
-<p class=Meginml><span lang=EN-US>On 64-bit Windows or Ubuntu, simply run the downloaded
-executable or binary file.</span></p>
+<p class=Meginml><span lang=EN-US>On 64-bit Windows or Ubuntu, simply run the
+downloaded executable or binary file.</span></p>
 
 <p class=Meginml><span lang=EN-US>On UNIX, traverse into the directory in which
 the game was installed (<b>release </b>by default). The game can be run by
@@ -595,7 +597,7 @@ file includes different rules, specifically tailored to specific tasks. Please
 note that the Make file may report errors such as “cannot create directory” if
 the directory already exists – this kind of error can be ignored as the <b>Make
 </b>file will use the existing directory instead. Below is a brief list of the
-rules and what they are for:</span></p>
+more common rules and what they are for:</span></p>
 
 <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
 background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
@@ -606,31 +608,35 @@ builds installs the game into the ./release/ directory.</span></p>
 
 <p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
 margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>deploy:         #
-updates the repository, builds and runs tests, builds and installs the game
+updates the repository, builds and runs all tests, builds and installs the game
 into the ./release/ directory</span></p>
 
 <p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
 margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>checkin:    #
-builds and runs tests, commits changes and attempts to push into the repository
-if tests succeed</span></p>
+builds and runs unit tests, commits changes and attempts to push into the
+repository if tests succeed</span></p>
 
 <p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
 margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>build:      #
-builds and runs tests</span></p>
+builds and runs unit tests</span></p>
+
+<p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
+margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>e2e:        #
+runs end-to-end tests</span></p>
 
 <p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
 margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>test-build: #
-builds and runs tests in a format friendly for outputting results to file</span></p>
+builds and runs all tests in a format friendly for outputting results to file</span></p>
 
 </div>
 
 <h2><a name="_Toc341447821">Continuous Integration</a></h2>
 
 <p class=Meginml><span lang=EN-GB>To configure your build server to
-automatically send emails on failed tests, edit the <b>emails</b> file to include
-the email addresses of those who should receive failure emails. A failure email
-will include a log file of the failed build which should indicate the errors
-and assist with debugging.</span></p>
+automatically send emails on failed tests, edit the <b>emails</b> file to
+include the email addresses of those who should receive failure emails. A
+failure email will include a log file of the failed build which should indicate
+the errors and assist with debugging.</span></p>
 
 <p class=Meginml><span lang=EN-GB>Once you have added these email addresses,
 install and set up mutt with a valid email address to ensure that attachments
