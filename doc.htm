@@ -54,6 +54,19 @@ h2
 	font-family:"Cambria","serif";
 	color:#4F81BD;
 	font-weight:bold;}
+h3
+	{mso-style-link:"Heading 3 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
 p.MsoToc1, li.MsoToc1, div.MsoToc1
 	{margin-top:6.0pt;
 	margin-right:0in;
@@ -283,6 +296,12 @@ span.BalloonTextChar
 	{mso-style-name:"Balloon Text Char";
 	mso-style-link:"Balloon Text";
 	font-family:"Tahoma","sans-serif";}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-link:"Heading 3";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
 .MsoChpDefault
 	{font-family:"Calibri","sans-serif";}
 .MsoPapDefault
@@ -403,10 +422,24 @@ cd Games             # traverse into Games directory</span></p>
 
 </div>
 
+<h3><span lang=EN-US>64-bit Windows:</span></h3>
+
+<p class=MsoNormal><span lang=EN-US>Download the executable from here:<br>
+<a href="https://github.com/downloads/ThrosturX/Alpha/TicTacToe.exe">https://github.com/downloads/ThrosturX/Alpha/TicTacToe.exe</a>
+</span></p>
+
+<h3><span lang=EN-US>64-bit Ubuntu</span></h3>
+
+<p class=MsoNormal><span lang=EN-US>Download the binary file from here:<br>
+<a href="https://github.com/downloads/ThrosturX/Alpha/TicTacToe">https://github.com/downloads/ThrosturX/Alpha/TicTacToe</a>
+</span></p>
+
+<h3><span lang=EN-US>Other operating systems:</span></h3>
+
 <p class=Meginml><span lang=EN-US>Download the installation files from github:</span></p>
 
-<p class=Meginml><span lang=EN-US><a
-href="https://github.com/ThrosturX/Alpha/archive/master.zip">https://github.com/ThrosturX/Alpha/archive/master.zip</a></span></p>
+<p class=Meginml><span lang=EN-GB><a
+href="https://github.com/ThrosturX/Alpha/archive/master.zip"><span lang=EN-US>https://github.com/ThrosturX/Alpha/archive/master.zip</span></a></span></p>
 
 <p class=Meginml><span lang=EN-US>This can be done using the command line on
 UNIX</span></p>
@@ -454,7 +487,7 @@ margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>mkd
 ../TicTacToe   # create TicTacToe directory<br>
 cp release/TicTacToe ../TicTacToe/TicTacToe # copy game<br>
 cd ..                # traverse back to Games<br>
-rm –rf Alpha              # remove sources<br clear=all style='page-break-before:
+rm –rf Alpha             # remove sources<br clear=all style='page-break-before:
 always'>
 </span></p>
 
@@ -462,9 +495,12 @@ always'>
 
 <h2><a name="_Toc341447817"><span lang=EN-US>Playing Tic Tac Toe</span></a></h2>
 
-<p class=Meginml><span lang=EN-US>On Ubuntu, traverse into the directory in
-which the game was installed (<b>release</b>). The game can be run by running
-it normally:</span></p>
+<p class=Meginml><span lang=EN-US>On 64-bit Windows or Ubuntu, simply run the downloaded
+executable or binary file.</span></p>
+
+<p class=Meginml><span lang=EN-US>On UNIX, traverse into the directory in which
+the game was installed (<b>release </b>by default). The game can be run by
+running it normally:</span></p>
 
 <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
 background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
@@ -473,10 +509,6 @@ background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
 margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>./TicTacToe</span></p>
 
 </div>
-
-<p class=Meginml><span lang=EN-US>On Windows, locate the <b>release</b> folder
-within the folder <b>Alpha-master</b> and run the executable file. If you have
-moved this file, you can run it from there.</span></p>
 
 <p class=Meginml><span lang=EN-US>Tic Tac Toe is a two player game. This game
 does not support single-player mode. The player who moves first is called ‘X’
@@ -594,11 +626,11 @@ builds and runs tests in a format friendly for outputting results to file</span>
 
 <h2><a name="_Toc341447821">Continuous Integration</a></h2>
 
-<p class=Meginml><span lang=EN-GB>To configure your build server to automatically
-send emails on failed tests, edit the <b>emails</b> file to include the email
-addresses of those who should receive failure emails. A failure email will
-include a log file of the failed build which should indicate the errors and
-assist with debugging.</span></p>
+<p class=Meginml><span lang=EN-GB>To configure your build server to
+automatically send emails on failed tests, edit the <b>emails</b> file to include
+the email addresses of those who should receive failure emails. A failure email
+will include a log file of the failed build which should indicate the errors
+and assist with debugging.</span></p>
 
 <p class=Meginml><span lang=EN-GB>Once you have added these email addresses,
 install and set up mutt with a valid email address to ensure that attachments
@@ -638,7 +670,7 @@ minute (0 - 59)<br>
 # |  |  |  +------- month (1 - 12)<br>
 # |  |  |  |  +---- day of week (0 - 6) (Sunday=0 or 7)<br>
 # |  |  |  |  |<br>
-  *  *  *  *  *  command to be executed</p>
+  *  *  *  *  *  command to be executed</p>
 
 </div>
 
