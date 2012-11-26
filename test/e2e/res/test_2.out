@@ -1,0 +1,155 @@
+Tic Tac Toe version 1.0.0
+	 by TEAM ALPHA
+
+   A   B   C
+1:   |   |  
+  --- --- ---
+2:   |   |  
+  --- --- ---
+3:   |   |  
+
+Player X's turn:
+   A   B   C
+1: X |   |  
+  --- --- ---
+2:   |   |  
+  --- --- ---
+3:   |   |  
+
+Player O's turn:
+   A   B   C
+1: X |   |  
+  --- --- ---
+2:   | O |  
+  --- --- ---
+3:   |   |  
+
+Player X's turn:
+   A   B   C
+1: X |   |  
+  --- --- ---
+2:   | O |  
+  --- --- ---
+3:   |   | X
+
+Player O's turn:
+   A   B   C
+1: X |   |  
+  --- --- ---
+2:   | O |  
+  --- --- ---
+3:   | O | X
+
+Player X's turn:
+   A   B   C
+1: X | X |  
+  --- --- ---
+2:   | O |  
+  --- --- ---
+3:   | O | X
+
+Player O's turn:
+   A   B   C
+1: X | X |  
+  --- --- ---
+2:   | O | O
+  --- --- ---
+3:   | O | X
+
+Player X's turn:
+   A   B   C
+1: X | X | X
+  --- --- ---
+2:   | O | O
+  --- --- ---
+3:   | O | X
+
+The score is:
+	X	O	Tie
+	1	0	0
+
+Play again?    A   B   C
+1:   |   |  
+  --- --- ---
+2:   |   |  
+  --- --- ---
+3:   |   |  
+
+Player X's turn:
+   A   B   C
+1:   |   |  
+  --- --- ---
+2:   | X |  
+  --- --- ---
+3:   |   |  
+
+Player O's turn:
+   A   B   C
+1: O |   |  
+  --- --- ---
+2:   | X |  
+  --- --- ---
+3:   |   |  
+
+Player X's turn:
+   A   B   C
+1: O |   | X
+  --- --- ---
+2:   | X |  
+  --- --- ---
+3:   |   |  
+
+Player O's turn:
+   A   B   C
+1: O |   | X
+  --- --- ---
+2:   | X |  
+  --- --- ---
+3: O |   |  
+
+Player X's turn:
+   A   B   C
+1: O |   | X
+  --- --- ---
+2: X | X |  
+  --- --- ---
+3: O |   |  
+
+Player O's turn:
+   A   B   C
+1: O |   | X
+  --- --- ---
+2: X | X | O
+  --- --- ---
+3: O |   |  
+
+Player X's turn:
+   A   B   C
+1: O |   | X
+  --- --- ---
+2: X | X | O
+  --- --- ---
+3: O | X |  
+
+Player O's turn:
+   A   B   C
+1: O | O | X
+  --- --- ---
+2: X | X | O
+  --- --- ---
+3: O | X |  
+
+Player X's turn:
+   A   B   C
+1: O | O | X
+  --- --- ---
+2: X | X | O
+  --- --- ---
+3: O | X | X
+
+The score is:
+	X	O	Tie
+	1	0	1
+
+Play again? Please come again.
+
