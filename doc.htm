@@ -545,14 +545,127 @@ clear=all style='page-break-before:always'>
 
 <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;line-height:115%'>&nbsp;</span></p>
 
-<h1><a name="_Toc341447818"><span lang=EN-US>Administration Manual</span></a></h1>
+<h1><a name="_Toc341447818"><span lang=EN-US>Development Manual</span></a></h1>
+
+<h2><span lang=EN-US>Introduction</span></h2>
+
+<p class=Meginml><span lang=EN-US>The Development Manual will guide you through
+downloading the game’s sources for development and testing. This guide will
+focus on Ubuntu-specific commands. If you are using a different operating
+system, please refer to your OS manual for specific commands.</span></p>
+
+<h2><span lang=EN-US>Installation</span></h2>
+
+<p class=Meginml><span lang=EN-US>Ensure that you have <b>G++, CPPCheck </b>and
+<b>Git</b> installed before continuing. On Ubuntu, these programs can be
+downloaded using the package manager on the command line:</span></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
+
+<p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
+margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>sudo
+apt-get install –y g++<br>
+sudo apt-get install –y git<br>
+sudo apt-get install –y cppcheck</span></p>
+
+</div>
+
+<p class=Meginml><span lang=EN-US>Once <b>G++, CPPCheck </b>and<b> Git</b> has
+been installed, traverse to the desired development directory. In this example,
+a new directory called <b>Dev</b> will be created.</span></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
+
+<p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
+margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>cd
+~                 # traverse to the home directory<br>
+mkdir dev            # create dev directory<br>
+cd dev               # traverse into Games directory</span></p>
+
+</div>
+
+<p class=Meginml><span lang=EN-US>Now clone the Git repository from <b>Github</b>.
+The repository is located at </span><a
+href="https://github.com/ThrosturX/Alpha.git"><span lang=EN-US>https://github.com/ThrosturX/Alpha.git</span></a><span
+lang=EN-US>. </span></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
+
+<p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
+margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>git
+clone https://github.com/ThrosturX/Alpha.git</span></p>
+
+</div>
+
+<p class=Meginml><span lang=EN-GB>The repository includes UnitTest++ which
+should work on UNIX operating systems with the <b>Make</b> file. The <b>Make</b>
+file includes different rules, specifically tailored to specific tasks. Please
+note that the Make file may report errors such as “cannot create directory” if
+the directory already exists – this kind of error can be ignored as the <b>Make
+</b>file will use the existing directory instead. Below is a brief list of the
+more common rules a developer will use and what they are for:</span></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
+
+<p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
+margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>install:    #
+builds installs the game into the ./release/ directory.</span></p>
+
+<p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
+margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>deploy:         #
+updates the repository, builds and runs all tests, builds and installs the game
+into the ./release/ directory</span></p>
+
+<p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
+margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>checkin:    #
+builds and runs unit tests, commits changes and attempts to push into the
+repository if tests succeed</span></p>
+
+<p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
+margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>build:      #
+builds and runs unit tests</span></p>
+
+<p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
+margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>e2e:        #
+runs end-to-end tests</span></p>
+
+</div>
+
+<h2>Development</h2>
+
+<p class=Meginml><span lang=EN-GB>A freshly cloned repository will have two
+important development folders, <b>src</b> and <b>test</b>. The <b>src</b>
+directory should contain all of your source files while the <b>test</b>
+directory should contain all of your unit tests. Within the <b>test</b>
+directory, there is a directory named <b>e2e</b> which handles end-to-end
+tests. These must be created manually, you will find a <i>bash</i> script,
+test/e2e/test.sh, which runs these end-to-end tests.</span></p>
+
+<p class=Meginml><span lang=EN-GB>A developer will mainly use the <b>Make build</b>
+rule in the <b>Make</b> file to test his code. If sources are added to the
+code, they must be added to the <b>Make</b> file’s variable called <i>SOURCES</i>.
+In addition, all new unit test sources must be added to <i>TESTS.</i> </span></p>
+
+<span lang=EN-US style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt;line-height:
+115%;font-family:"Cambria","serif";color:#365F91'>&nbsp;</span></b></p>
+
+<h1><span lang=EN-US>Administration Manual</span></h1>
 
 <h2><a name="_Toc341447819"><span lang=EN-US>Introduction</span></a></h2>
 
 <p class=Meginml><span lang=EN-US>The Administration Manual will guide you
-through downloading the game’s sources for development and testing. This guide
-will focus on Ubuntu-specific commands. If you are using a different operating
-system, please refer to your OS manual for specific commands.</span></p>
+through downloading the game’s sources for development, testing and automatic
+building. This guide will focus on Ubuntu-specific commands. If you are using a
+different operating system, please refer to your OS manual for specific
+commands.</span></p>
 
 <p class=Meginml><b><span lang=EN-US>For instructions on how to install the
 program and play the game, please refer to the User Manual.</span></b></p>
