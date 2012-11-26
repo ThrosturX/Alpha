@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
 <meta name=Generator content="Microsoft Word 14 (filtered)">
+<title>Tic Tac Toe Documentation</title>
 <style>
 <!--
  /* Font Definitions */
@@ -381,30 +382,15 @@ clear=all style='page-break-before:always'>
 <h2><a name="_Toc341447815"><span lang=EN-US>Introduction</span></a></h2>
 
 <p class=Meginml><span lang=EN-US>The User Manual will guide you through
-installing and playing the game. Please note that this version of the game is
-only supported on UNIX systems. This guide will focus on Ubuntu-specific
+installing and playing the game. This guide will focus on Windows and Ubuntu-specific
 commands. If you are using a different UNIX operating system, please refer to
 your OS manual for specific commands.</span></p>
 
 <h2><a name="_Toc341447816"><span lang=EN-US>Installation</span></a></h2>
 
-<p class=Meginml><span lang=EN-US>Ensure that you have <b>G++ </b>and <b>Git</b>
-installed before continuing. On Ubuntu, <b>G++ </b>and <b>Git</b> can be
-downloaded using the package manager on the command line:</span></p>
-
-<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
-background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
-
-<p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
-margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>sudo
-apt-get install –y g++<br>
-sudo apt-get install –y git</span></p>
-
-</div>
-
-<p class=Meginml><span lang=EN-US>Once <b>G++</b> has been installed, traverse
-to the desired installation directory. In this example, a new directory called <b>Games</b>
-will be created.</span></p>
+<p class=Meginml><span lang=EN-US>Traverse to the desired installation
+directory. In this example, a new directory called <b>Games</b> will be
+created.</span></p>
 
 <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
 background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
@@ -417,31 +403,38 @@ cd Games             # traverse into Games directory</span></p>
 
 </div>
 
-<p class=Meginml><span lang=EN-US>Now clone the Git repository from <b>Github</b>.
-The repository is located at </span><span lang=EN-GB><a
-href="https://github.com/ThrosturX/Alpha.git"><span lang=EN-US>https://github.com/ThrosturX/Alpha.git</span></a></span><span
-lang=EN-US>. </span></p>
+<p class=Meginml><span lang=EN-US>Download the installation files from github:</span></p>
+
+<p class=Meginml><span lang=EN-US><a
+href="https://github.com/ThrosturX/Alpha/archive/master.zip">https://github.com/ThrosturX/Alpha/archive/master.zip</a></span></p>
+
+<p class=Meginml><span lang=EN-US>This can be done using the command line on
+UNIX</span></p>
 
 <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
 background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
 
 <p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
-margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>git
-clone https://github.com/ThrosturX/Alpha.git</span></p>
+margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>wget   https://github.com/ThrosturX/Alpha/archive/master.zip<br>
+unzip master.zip     # extracts the contents<br>
+cd Alpha-master      # change into the new directory</span></p>
 
 </div>
 
-<p class=Meginml><span lang=EN-US>The game must now be compiled. This can be
-done using <b>make</b>, which is included with most UNIX systems. The rule that
-is used to correctly deploy the game is called <b>install</b>. This will install
-the game in the <b>./release/ </b>directory.</span></p>
+<p class=Meginml><b><span lang=EN-US>The game has already been compiled into
+64-bit binaries for Windows and Ubuntu</span></b><span lang=EN-US>, if you are
+using one of these, you can skip this step. <b>For other systems, game must be
+compiled</b>. This can be done using <b>make</b>, which is included with most
+UNIX systems. <b>G++</b> is also required to compile the code manually and must
+be installed by an Administrator. The rule that is used to correctly deploy the
+game is called <b>install</b>. This will install the game in the <b>./release/ </b>directory.</span></p>
 
 <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
 background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
 
 <p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
-margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>cd
-Alpha             # open the git repository<br>
+margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>sudo
+apt-get –y g++  # install g++<br>
 make install              # compile sources</span></p>
 
 </div>
@@ -450,7 +443,8 @@ make install              # compile sources</span></p>
 sources and keep the game in a different directory. In this example, a new
 directory called <b>TicTacToe</b> will be created in the <b>Games</b>
 directory. The game will then be copied to the <b>TicTacToe</b> directory and
-the sources will be removed.</span></p>
+the sources will be removed. In a windows environment, this can all be easily
+done using Windows Explorer.</span></p>
 
 <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
 background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
@@ -460,22 +454,17 @@ margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>mkd
 ../TicTacToe   # create TicTacToe directory<br>
 cp release/TicTacToe ../TicTacToe/TicTacToe # copy game<br>
 cd ..                # traverse back to Games<br>
-rm –rf Alpha              # remove sources</span></p>
+rm –rf Alpha              # remove sources<br clear=all style='page-break-before:
+always'>
+</span></p>
 
 </div>
 
-<span lang=EN-US style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif"'><br
-clear=all style='page-break-before:always'>
-</span>
-
-<p class=MsoNormal><b><span lang=EN-US style='font-size:13.0pt;line-height:
-115%;font-family:"Cambria","serif";color:#4F81BD'>&nbsp;</span></b></p>
-
 <h2><a name="_Toc341447817"><span lang=EN-US>Playing Tic Tac Toe</span></a></h2>
 
-<p class=Meginml><span lang=EN-US>Traverse into the directory in which you
-installed the game (<b>release</b>). The game can be run by running it
-normally:</span></p>
+<p class=Meginml><span lang=EN-US>On Ubuntu, traverse into the directory in
+which the game was installed (<b>release</b>). The game can be run by running
+it normally:</span></p>
 
 <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
 background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
@@ -484,6 +473,10 @@ background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
 margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-US>./TicTacToe</span></p>
 
 </div>
+
+<p class=Meginml><span lang=EN-US>On Windows, locate the <b>release</b> folder
+within the folder <b>Alpha-master</b> and run the executable file. If you have
+moved this file, you can run it from there.</span></p>
 
 <p class=Meginml><span lang=EN-US>Tic Tac Toe is a two player game. This game
 does not support single-player mode. The player who moves first is called ‘X’
@@ -535,9 +528,9 @@ sudo apt-get install –y cppcheck</span></p>
 
 </div>
 
-<p class=Meginml><span lang=EN-US>Once <b>G++</b> has been installed, traverse
-to the desired development directory. In this example, a new directory called <b>Dev</b>
-will be created.</span></p>
+<p class=Meginml><span lang=EN-US>Once <b>G++, CPPCheck </b>and<b> Git</b> has
+been installed, traverse to the desired development directory. In this example,
+a new directory called <b>Dev</b> will be created.</span></p>
 
 <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
 background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
@@ -566,8 +559,11 @@ clone https://github.com/ThrosturX/Alpha.git</span></p>
 
 <p class=Meginml><span lang=EN-GB>The repository includes UnitTest++ which
 should work on UNIX operating systems with the <b>Make</b> file. The <b>Make</b>
-file includes different rules, specifically tailored to specific tasks. Below
-is a brief list of the rules and what they are for:</span></p>
+file includes different rules, specifically tailored to specific tasks. Please
+note that the Make file may report errors such as “cannot create directory” if
+the directory already exists – this kind of error can be ignored as the <b>Make
+</b>file will use the existing directory instead. Below is a brief list of the
+rules and what they are for:</span></p>
 
 <div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
 background:#DAEEF3;margin-left:.25in;margin-right:.25in'>
@@ -583,7 +579,8 @@ into the ./release/ directory</span></p>
 
 <p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
 margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>checkin:    #
-builds and runs tests, commits changes and attempts to push into the repository</span></p>
+builds and runs tests, commits changes and attempts to push into the repository
+if tests succeed</span></p>
 
 <p class=code style='margin-top:0in;margin-right:0in;margin-bottom:10.0pt;
 margin-left:0in;background:#DAEEF3;border:none;padding:0in'><span lang=EN-GB>build:      #
@@ -597,11 +594,11 @@ builds and runs tests in a format friendly for outputting results to file</span>
 
 <h2><a name="_Toc341447821">Continuous Integration</a></h2>
 
-<p class=Meginml><span lang=EN-GB>To configure your build server to
-automatically send emails on failed tests, edit the <b>emails</b> file to
-include the email addresses of those who should receive failure emails. A
-failure email will include a log file of the failed build which should indicate
-the errors and assist with debugging.</span></p>
+<p class=Meginml><span lang=EN-GB>To configure your build server to automatically
+send emails on failed tests, edit the <b>emails</b> file to include the email
+addresses of those who should receive failure emails. A failure email will
+include a log file of the failed build which should indicate the errors and
+assist with debugging.</span></p>
 
 <p class=Meginml><span lang=EN-GB>Once you have added these email addresses,
 install and set up mutt with a valid email address to ensure that attachments
@@ -641,7 +638,7 @@ minute (0 - 59)<br>
 # |  |  |  +------- month (1 - 12)<br>
 # |  |  |  |  +---- day of week (0 - 6) (Sunday=0 or 7)<br>
 # |  |  |  |  |<br>
-  *  *  *  *  *  command to be executed</p>
+  *  *  *  *  *  command to be executed</p>
 
 </div>
 
