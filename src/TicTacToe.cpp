@@ -42,7 +42,7 @@ void TicTacToe::endGame(char p)
 	{
 		// winner
 		case 'X':
-			++score[1];
+			++score[0];
 			break;
 		case 'O':
 			++score[1];
