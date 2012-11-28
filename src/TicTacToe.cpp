@@ -1,7 +1,7 @@
 #include "TicTacToe.h"
 #include <cstdlib>
 using namespace std;
-aoenuthasoeuth
+
 // Constructer, initializes scores as 0-0-0 (player 1, player 2, tie)
 // Initializes every tile on the board as ' '
 TicTacToe::TicTacToe()
