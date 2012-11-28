@@ -76,6 +76,7 @@ test-build:
 
 e2e:
 	@echo "\nRunning End-To-End tests...\n"
+	$(CC) $(SOURCES) $(EXE) -o $(BLOC)
 	$(CMP) 
 
 clean:
