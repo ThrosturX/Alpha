@@ -1,4 +1,4 @@
-.PHONY: build deploy
+.PHONY: build deploy test-build
 CC=g++
 CFLAGS=
 LDFLAGS=
@@ -68,6 +68,8 @@ test-build:
 	@$(CC) $(SOURCES) $(TESTS) -o $(BLOC) $(lib) 
 	@$(BLOC)
 	@cppcheck --enable=all src
+	@rm -rf $(TC)	
+	$(CC) $(SOURCES) $(EXE) -o $(BLOC)
 	@$(MAKE) e2e
 	@rm -rf $(TC)	
 	@echo ""
